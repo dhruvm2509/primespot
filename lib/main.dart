@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
-import 'package:primespot/Login/LoginPage.dart';
+
+import 'package:primespot/SplashScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,7 +9,6 @@ void main() {
 
 class MyApp extends StatefulWidget {
   // const MyApp({Key? key}) : super(key: key);
-
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'PrimeSpot',
       routes: {
-        '/': (context) => LoginScreen(),
+        '/': (context) => SplashScreen(),
       },
     );
   }

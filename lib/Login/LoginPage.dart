@@ -35,7 +35,7 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
                 Container(
                   child: Image.asset(
-                    "logo.PNG",
+                    "Capture1-modified.PNG",
                     width: 200,
                     height: 200,
                   ),
