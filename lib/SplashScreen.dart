@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.lightBlue.shade300,
         body: SizedBox(
           width: 800.0,
           child: Column(
@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Container(
                 child: Image(
-                  image: AssetImage('Capture-modified.PNG'),
+                  image: AssetImage('assets/Capture-modified.png'),
                   width: 120,
                   height: 120,
                 ),
@@ -42,24 +42,15 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               Container(
                 child: Image(
-                  image: AssetImage('s.JPG'),
+                  image: AssetImage('assets/s.JPG'),
                 ),
               ),
               SizedBox(
                 height: 10.0,
               ),
-              // Container(
-              //   child: Text(
-              //     'Expect   More   Pay   Less',
-              //     style: TextStyle(
-              //       fontSize: 14.0,
-              //       fontWeight: FontWeight.bold,
-              //     ),
-              //   ),
-              // ),
               Container(
                 child: Image(
-                  image: AssetImage('r.JPG'),
+                  image: AssetImage('assets/r.JPG'),
                 ),
               ),
             ],
