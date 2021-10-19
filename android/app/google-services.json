@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "220950846236",
+    "project_id": "primespot-6cbcd",
+    "storage_bucket": "primespot-6cbcd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220950846236:android:6a46329354d35be77238d9",
+        "android_client_info": {
+          "package_name": "com.example.primespot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220950846236-jv497aaqqj23d9ctsl82i9ceki2i9t9l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.primespot",
+            "certificate_hash": "91fe51535ed69a6c8385221b742e6ba900a74d0a"
+          }
+        },
+        {
+          "client_id": "220950846236-pg2pd6h6afja8hoqgi03b3ck0n98iega.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRutoEimxPpUUO4friQgPjteNLUMFDyws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220950846236-pg2pd6h6afja8hoqgi03b3ck0n98iega.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

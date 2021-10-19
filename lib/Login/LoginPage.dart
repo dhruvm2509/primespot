@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
+import 'OtpPage.dart';
+
 bool role = false;
 
 class LoginScreen extends StatefulWidget {
@@ -15,10 +17,17 @@ class LoginScreen extends StatefulWidget {
 class LoginScreenState extends State<LoginScreen> {
   final RoundedLoadingButtonController _btnController1 =
       RoundedLoadingButtonController();
+  TextEditingController _controller = TextEditingController();
   void _doSomething(RoundedLoadingButtonController controller) async {
-    Duration(seconds: 5);
-
-    controller.success();
+    if (_controller.text.length == 10) {
+      Duration(seconds: 5);
+      controller.success();
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => OTPScreen(_controller.text)));
+    } else {
+      print('Invalid Number');
+      controller.reset();
+    }
   }
 
   @override
@@ -54,7 +63,7 @@ class LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 80,
                   width: 250,
                   child: Center(
                     child: TextField(
@@ -64,7 +73,7 @@ class LoginScreenState extends State<LoginScreen> {
                         labelText: "Mobile Number",
                         prefixIcon: Icon(Icons.phone),
                         contentPadding:
-                            EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                            EdgeInsets.fromLTRB(00.0, 0.0, 20.0, 0.0),
                         enabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(20.0),
@@ -79,6 +88,9 @@ class LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                       ),
+                      maxLength: 10,
+                      keyboardType: TextInputType.number,
+                      controller: _controller,
                     ),
                   ),
                 ),
@@ -95,6 +107,9 @@ class LoginScreenState extends State<LoginScreen> {
                     },
                     child: Text('Send OTP'),
                   ),
+                ),
+                SizedBox(
+                  height: 20.0,
                 ),
               ],
             ),
