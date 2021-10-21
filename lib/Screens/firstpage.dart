@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:primespot/Login/LoginPage.dart';
 
+var seller = false;
+
 class FirstPage extends StatefulWidget {
   const FirstPage({Key? key}) : super(key: key);
 
@@ -18,7 +20,7 @@ class _FirstPageState extends State<FirstPage> {
             color: Colors.white,
             child: Image.asset(
               'assets/back (2).jpg',
-              height: 735.0,
+              height: 800.0,
               fit: BoxFit.fill,
             ),
           ),
@@ -64,7 +66,8 @@ class _FirstPageState extends State<FirstPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
+                              builder: (context) =>
+                                  LoginScreen(isseller: false)));
                     },
                   ),
                 ),
@@ -90,7 +93,8 @@ class _FirstPageState extends State<FirstPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
+                              builder: (context) =>
+                                  LoginScreen(isseller: true)));
                     },
                   ),
                 ),

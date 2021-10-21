@@ -1,20 +1,26 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
+import 'package:primespot/Screens/buyer.dart';
+import 'package:primespot/Screens/demo.dart';
 import 'package:primespot/Screens/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+bool seller = false;
 
 class OTPScreen extends StatefulWidget {
-  final String? Phone;
-  OTPScreen(this.Phone);
+  final String? phone;
+  OTPScreen(this.phone);
 
   @override
   _OTPScreenState createState() => _OTPScreenState();
 }
 
 class _OTPScreenState extends State<OTPScreen> {
+  bool codeSent = false;
   final TextEditingController _pinPutController = TextEditingController();
   final FocusNode _pinPutFocusNode = FocusNode();
-  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   String _verificationCode = '';
 
   BoxDecoration get _pinPutDecoration {
@@ -22,6 +28,120 @@ class _OTPScreenState extends State<OTPScreen> {
       border: Border.all(color: Colors.deepPurpleAccent),
       borderRadius: BorderRadius.circular(15.0),
     );
+  }
+
+  _verifyPhone() async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+        phoneNumber: '+91${widget.phone}',
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          print('Credentials');
+          print(credential);
+          await FirebaseAuth.instance
+              .signInWithCredential(credential)
+              .then((value) async {
+            if (value.user != null) {
+              print('--------------------------User logged In Successfully');
+            }
+          });
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          print(e.message);
+        },
+        codeSent: (String verificationID, int? resendToken) async {
+          setState(() {
+            _verificationCode = verificationID;
+            codeSent = true;
+          });
+        },
+        codeAutoRetrievalTimeout: (String verificationID) {
+          setState(() {
+            _verificationCode = verificationID;
+          });
+        },
+        timeout: Duration(seconds: 60));
+  }
+
+  Future<void> checkRole() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    seller = (pref.getBool('sellerrole') ?? false);
+    print(seller);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    checkRole();
+    _verifyPhone();
+  }
+
+  _phoneVerified() async {
+    if (seller) {
+      await FirebaseFirestore.instance
+          .collection("Seller")
+          .doc('+91' + widget.phone!)
+          .get()
+          .then(
+        (value) {
+          if (value.exists) {
+            // Navigator.pushReplacementNamed(context,'/ownerHomePage');
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+            );
+          } else {
+            FirebaseFirestore.instance
+                .collection("Seller")
+                .doc(
+                  '+91' + widget.phone!,
+                )
+                .set(
+              {
+                'Name': 'Name',
+                'mobileNumber': '+91' + widget.phone!,
+              },
+            );
+            // Navigator.pushReplacementNamed(context, '/detailsScreen');
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DemoScreen()),
+            );
+          }
+        },
+      );
+    } else {
+      await FirebaseFirestore.instance
+          .collection("Buyer")
+          .doc('+91' + widget.phone!)
+          .get()
+          .then(
+        (value) {
+          if (value.exists) {
+            // Navigator.pushReplacementNamed(context,'/location_page');
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => BuyerScreen()),
+            );
+          } else {
+            FirebaseFirestore.instance
+                .collection("Buyer")
+                .doc(
+                  '+91' + widget.phone!,
+                )
+                .set(
+              {
+                'Name': 'Name',
+                'mobileNumber': '+91' + widget.phone!,
+              },
+            );
+            // Navigator.pushReplacementNamed(context, '/parkvehicleDetailPage');
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DemoScreen()),
+            );
+          }
+        },
+      );
+    }
   }
 
   @override
@@ -36,7 +156,7 @@ class _OTPScreenState extends State<OTPScreen> {
             margin: EdgeInsets.only(top: 40),
             child: Center(
               child: Text(
-                'Verify +91- ${widget.Phone}',
+                'Verify +91- ${widget.phone}',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
               ),
             ),
@@ -49,7 +169,6 @@ class _OTPScreenState extends State<OTPScreen> {
               padding: const EdgeInsets.all(20.0),
               child: PinPut(
                 fieldsCount: 6,
-                // onSubmit: (String pin) => _showSnackBar(pin, context),
                 focusNode: _pinPutFocusNode,
                 controller: _pinPutController,
                 submittedFieldDecoration: _pinPutDecoration.copyWith(
@@ -62,16 +181,22 @@ class _OTPScreenState extends State<OTPScreen> {
                             verificationId: _verificationCode, smsCode: pin))
                         .then((value) async {
                       if (value.user != null) {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomeScreen()));
+                        _phoneVerified();
+                        // if (seller) {
+                        //   Navigator.pushReplacement(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (context) => HomeScreen()));
+                        // } else {
+                        //   Navigator.pushReplacement(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (context) => BuyerScreen()));
+                        // }
                       }
                     });
                   } catch (e) {
                     FocusScope.of(context).unfocus();
-                    // _scaffoldkey.currentState
-                    //     .showSnackBar(SnackBar(content: Text('Invalid OTP')));
                   }
                 },
                 selectedFieldDecoration: _pinPutDecoration,
@@ -87,56 +212,6 @@ class _OTPScreenState extends State<OTPScreen> {
           )
         ],
       ),
-    );
-  }
-
-  _verifyPhone() async {
-    await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: '+91${widget.Phone}',
-        verificationCompleted: (PhoneAuthCredential credential) async {
-          await FirebaseAuth.instance
-              .signInWithCredential(credential)
-              .then((value) async {
-            if (value.user != null) {
-              print('User logged In Successfully');
-            }
-          });
-        },
-        verificationFailed: (FirebaseAuthException e) {
-          print(e.message);
-        },
-        codeSent: (String verificationID, int? resendToken) async {
-          setState(() {
-            _verificationCode = verificationID;
-          });
-        },
-        codeAutoRetrievalTimeout: (String verificationID) {
-          setState(() {
-            _verificationCode = verificationID;
-          });
-        },
-        timeout: Duration(seconds: 60));
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _verifyPhone();
-  }
-
-  void _showSnackBar(String pin, BuildContext context) {
-    SnackBar(
-      duration: const Duration(seconds: 3),
-      content: Container(
-        height: 80.0,
-        child: Center(
-          child: Text(
-            'Pin Submitted. Value: $pin',
-            style: const TextStyle(fontSize: 25.0),
-          ),
-        ),
-      ),
-      backgroundColor: Colors.deepPurpleAccent,
     );
   }
 }
