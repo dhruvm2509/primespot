@@ -1,26 +1,27 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:primespot/Screens/firstpage.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+import 'firstpage.dart';
+
+class BuyerScreen extends StatefulWidget {
+  const BuyerScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _BuyerScreenState createState() => _BuyerScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _BuyerScreenState extends State<BuyerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text('Home Page'),
+          child: Text('Buyer Page'),
         ),
         actions: [
           IconButton(
-              onPressed: () async {
-                await FirebaseAuth.instance.signOut();
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => FirstPage()),
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
         children: [
           Container(
-            child: Text('Welcome to home page!!'),
+            child: Text('Welcome to Buyer\'s page!!'),
           )
         ],
       )),

@@ -1,30 +1,28 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
+import 'package:primespot/Screens/buyer.dart';
+import 'package:primespot/Screens/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:primespot/Screens/SplashScreen.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
-  runApp(MyApp());
-}
+  final SharedPreferences prefss = await SharedPreferences.getInstance();
+  final isLoggedIn = (prefss.getBool('isLoggedIn') == null)
+      ? false
+      : prefss.getBool('isLoggedIn');
 
-class MyApp extends StatefulWidget {
-  // const MyApp({Key? key}) : super(key: key);
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  var seller = (pref.getBool('sellerrole') ?? false);
 
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  await Firebase.initializeApp();
+  runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'PrimeSpot',
-      routes: {
-        '/': (context) => SplashScreen(),
-      },
-    );
-  }
+      // routes: {
+      //   '/': (context) => SplashScreen(),
+      // },
+      home: isLoggedIn == null
+          ? (seller ? HomeScreen() : BuyerScreen())
+          : SplashScreen()));
 }
