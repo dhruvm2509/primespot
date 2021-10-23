@@ -43,11 +43,14 @@ class LoginScreenState extends State<LoginScreen> {
                   height: 70,
                 ),
                 Container(
-                  child: Image(
-                    image: AssetImage('assets/Capture-modified.png'),
-                    width: 200,
-                    height: 200,
-                  ),
+                  width: 200.0,
+                  height: 200.0,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 2.5),
+                      borderRadius: BorderRadius.circular(30.0),
+                      image: DecorationImage(
+                        image: AssetImage('assets/access_adobespark (1).jpg'),
+                      )),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 30),
@@ -58,6 +61,7 @@ class LoginScreenState extends State<LoginScreen> {
                         color: Colors.black,
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
+                        letterSpacing: 1.5,
                       ),
                     ),
                   ),
@@ -67,11 +71,14 @@ class LoginScreenState extends State<LoginScreen> {
                   width: 250,
                   child: Center(
                     child: TextField(
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, letterSpacing: 1.0),
                       decoration: InputDecoration(
-                        fillColor: Colors.amber,
                         hintText: "Enter Mobile Number",
-                        labelText: "Mobile Number",
-                        prefixIcon: Icon(Icons.phone),
+                        prefixIcon: Icon(
+                          Icons.phone,
+                          color: Colors.black,
+                        ),
                         contentPadding:
                             EdgeInsets.fromLTRB(00.0, 0.0, 20.0, 0.0),
                         enabledBorder: const OutlineInputBorder(
@@ -79,12 +86,13 @@ class LoginScreenState extends State<LoginScreen> {
                             Radius.circular(20.0),
                           ),
                           borderSide: const BorderSide(
-                            color: Colors.grey,
+                            color: Colors.black,
+                            width: 2.0,
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Colors.indigo, width: 2.0),
+                          borderSide:
+                              const BorderSide(color: Colors.amber, width: 2.5),
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                       ),
@@ -101,11 +109,18 @@ class LoginScreenState extends State<LoginScreen> {
                   height: 40,
                   width: 120,
                   child: RoundedLoadingButton(
+                    color: Colors.amber,
                     controller: _btnController1,
                     onPressed: () {
                       _doSomething(_btnController1);
                     },
-                    child: Text('Send OTP'),
+                    child: Text(
+                      'Send OTP',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.5),
+                    ),
                   ),
                 ),
                 SizedBox(

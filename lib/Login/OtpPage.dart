@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
-import 'package:primespot/Screens/home.dart';
+import 'package:primespot/Screens/firstpage.dart';
 
 class OTPScreen extends StatefulWidget {
   final String? Phone;
@@ -28,7 +28,8 @@ class _OTPScreenState extends State<OTPScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('OTP Verification'),
+        backgroundColor: Colors.amber,
+        title: Center(child: Text('OTP Verification')),
       ),
       body: Column(
         children: [
@@ -65,7 +66,7 @@ class _OTPScreenState extends State<OTPScreen> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomeScreen()));
+                                builder: (context) => FirstPage()));
                       }
                     });
                   } catch (e) {
