@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:primespot/Login/LoginPage.dart';
-import 'package:primespot/Screens/firstpage.dart';
 
 class SplashScreen extends StatefulWidget {
   //const SplashScreen({Key? key}) : super(key: key);
@@ -17,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => FirstPage()));
+          context, MaterialPageRoute(builder: (context) => LoginScreen()));
     });
   }
 
