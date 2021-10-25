@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
+import 'package:primespot/Screens/firstpage.dart';
 import 'package:primespot/Screens/buyer.dart';
 import 'package:primespot/Screens/demo.dart';
 import 'package:primespot/Screens/home.dart';
@@ -148,7 +149,8 @@ class _OTPScreenState extends State<OTPScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('OTP Verification'),
+        backgroundColor: Colors.amber,
+        title: Center(child: Text('OTP Verification')),
       ),
       body: Column(
         children: [
@@ -181,18 +183,14 @@ class _OTPScreenState extends State<OTPScreen> {
                             verificationId: _verificationCode, smsCode: pin))
                         .then((value) async {
                       if (value.user != null) {
+
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FirstPage()));
+
                         _phoneVerified();
-                        // if (seller) {
-                        //   Navigator.pushReplacement(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: (context) => HomeScreen()));
-                        // } else {
-                        //   Navigator.pushReplacement(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: (context) => BuyerScreen()));
-                        // }
+
                       }
                     });
                   } catch (e) {

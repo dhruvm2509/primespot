@@ -59,15 +59,9 @@ flutter:
   assets:
      - assets/Capture-modified.png
      - assets/s.JPG
-     - assets/r.JPG
-     - assets/lock.jpg
-     - assets/lock 1.jpg
-     - assets/back.jpg
-     - assets/lock 3.jpg
-     - assets/lock 2.webp
-     - assets/back (1).jpg
-     - assets/back (2).jpg
-     - assets/lock-4.jpg
+     - assets/r.JPG   
+     
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -80,12 +74,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
 
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+    - family: Georama
+      fonts:
+        - asset: fonts/Georama-Regular.ttf
+        - asset: fonts/Georama-Medium.ttf
   #         style: italic
   #   - family: JacquesFrancoisShadow-Regular
   #     fonts:

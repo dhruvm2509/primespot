@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:primespot/Login/LoginPage.dart';
+
+import 'package:primespot/Screens/buyer.dart';
+import 'package:primespot/Screens/seller.dart';
 
 var seller = false;
 
@@ -25,27 +27,15 @@ class _FirstPageState extends State<FirstPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 160.0, left: 30.0, right: 30.0),
-            child: Container(
-              width: 350.0,
-              height: 400.0,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.amber, width: 7.0),
-                borderRadius: BorderRadius.circular(50.0),
-                color: Colors.white,
-                image: DecorationImage(
-                  image: AssetImage('assets/lock 2.webp'),
-                  fit: BoxFit.contain,
-                  colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.6), BlendMode.dstATop),
-                ),
-              ),
+            padding: const EdgeInsets.only(top: 40.0, left: 10.0),
+            child: Image(
+              image: NetworkImage(
+                  'https://media.istockphoto.com/vectors/sign-in-page-abstract-concept-vector-illustration-vector-id1286100689?b=1&k=20&m=1286100689&s=170667a&w=0&h=hH1SozTmztJq36dXDxUT5JAWXW54o46cDyapFJMqrEg='),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 80.0, top: 60.0),
+            padding: EdgeInsets.only(left: 80.0, top: 370.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
                   width: 200.0,
@@ -53,21 +43,29 @@ class _FirstPageState extends State<FirstPage> {
                   child: ElevatedButton(
                     child: Text(
                       'Login  as  Buyer',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      textStyle: const TextStyle(
-                        fontSize: 20.0,
-                      ),
-                      primary: Colors.black.withOpacity(0.7),
+                      side: BorderSide(color: Colors.black, width: 2.5),
+                      primary: Colors.amber,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40.0)),
                     ),
                     onPressed: () {
+
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Register()));
+
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
                                   LoginScreen(isseller: false)));
+
                     },
                   ),
                 ),
@@ -80,21 +78,32 @@ class _FirstPageState extends State<FirstPage> {
                   child: ElevatedButton(
                     child: Text(
                       'Login  as  Seller',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      textStyle: const TextStyle(
-                        fontSize: 20.0,
+                      side: BorderSide(
+                        color: Colors.black,
+                        width: 2.5,
                       ),
-                      primary: Colors.black.withOpacity(0.7),
+                      primary: Colors.amber,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40.0)),
                     ),
                     onPressed: () {
+// <<<<<<< firstpage
+//                       Navigator.push(context,
+//                           MaterialPageRoute(builder: (context) => Seller()));
+// =======
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
                                   LoginScreen(isseller: true)));
+// >>>>>>> main
                     },
                   ),
                 ),
