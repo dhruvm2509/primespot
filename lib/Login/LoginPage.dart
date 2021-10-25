@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'OtpPage.dart';
 
 bool role = false;
 
 class LoginScreen extends StatefulWidget {
   static String? phone;
-  // final bool isowner;
+  final bool isseller;
 
-  LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({Key? key, required this.isseller}) : super(key: key);
+
   @override
   LoginScreenState createState() => LoginScreenState();
 }
@@ -26,7 +27,23 @@ class LoginScreenState extends State<LoginScreen> {
           MaterialPageRoute(builder: (context) => OTPScreen(_controller.text)));
     } else {
       print('Invalid Number');
+
       controller.reset();
+    }
+  }
+
+  @override
+  void initState() {
+    fetchRole();
+    super.initState();
+  }
+
+  void fetchRole() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if (widget.isseller == true) {
+      await pref.setBool('sellerrole', true);
+    } else {
+      await pref.setBool('sellerrole', false);
     }
   }
 
