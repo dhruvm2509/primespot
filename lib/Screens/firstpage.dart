@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:primespot/Screens/buyer.dart';
-import 'package:primespot/Screens/seller.dart';
+import 'package:primespot/Login/LoginPage.dart';
 
 var seller = false;
 
@@ -20,11 +18,6 @@ class _FirstPageState extends State<FirstPage> {
         children: [
           Container(
             color: Colors.white,
-            child: Image.asset(
-              'assets/back (2).jpg',
-              height: 800.0,
-              fit: BoxFit.fill,
-            ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 40.0, left: 10.0),
@@ -56,16 +49,11 @@ class _FirstPageState extends State<FirstPage> {
                           borderRadius: BorderRadius.circular(40.0)),
                     ),
                     onPressed: () {
-
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Register()));
-
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
                                   LoginScreen(isseller: false)));
-
                     },
                   ),
                 ),
@@ -94,16 +82,11 @@ class _FirstPageState extends State<FirstPage> {
                           borderRadius: BorderRadius.circular(40.0)),
                     ),
                     onPressed: () {
-// <<<<<<< firstpage
-//                       Navigator.push(context,
-//                           MaterialPageRoute(builder: (context) => Seller()));
-// =======
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
                                   LoginScreen(isseller: true)));
-// >>>>>>> main
                     },
                   ),
                 ),
