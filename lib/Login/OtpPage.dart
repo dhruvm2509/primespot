@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
-import 'package:primespot/Screens/firstpage.dart';
-import 'package:primespot/Screens/buyer.dart';
-import 'package:primespot/Screens/demo.dart';
+import 'package:primespot/Registration/BuyerRegistration.dart';
 import 'package:primespot/Screens/home.dart';
+import 'package:primespot/Registration/SellerRegistration.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -84,7 +83,6 @@ class _OTPScreenState extends State<OTPScreen> {
           .then(
         (value) {
           if (value.exists) {
-            // Navigator.pushReplacementNamed(context,'/ownerHomePage');
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => HomeScreen()),
@@ -101,10 +99,9 @@ class _OTPScreenState extends State<OTPScreen> {
                 'mobileNumber': '+91' + widget.phone!,
               },
             );
-            // Navigator.pushReplacementNamed(context, '/detailsScreen');
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => DemoScreen()),
+              MaterialPageRoute(builder: (context) => SellerRegistration()),
             );
           }
         },
@@ -117,10 +114,9 @@ class _OTPScreenState extends State<OTPScreen> {
           .then(
         (value) {
           if (value.exists) {
-            // Navigator.pushReplacementNamed(context,'/location_page');
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BuyerScreen()),
+              MaterialPageRoute(builder: (context) => HomeScreen()),
             );
           } else {
             FirebaseFirestore.instance
@@ -134,10 +130,9 @@ class _OTPScreenState extends State<OTPScreen> {
                 'mobileNumber': '+91' + widget.phone!,
               },
             );
-            // Navigator.pushReplacementNamed(context, '/parkvehicleDetailPage');
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => DemoScreen()),
+              MaterialPageRoute(builder: (context) => BuyerRegistration()),
             );
           }
         },
@@ -183,14 +178,7 @@ class _OTPScreenState extends State<OTPScreen> {
                             verificationId: _verificationCode, smsCode: pin))
                         .then((value) async {
                       if (value.user != null) {
-
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => FirstPage()));
-
                         _phoneVerified();
-
                       }
                     });
                   } catch (e) {

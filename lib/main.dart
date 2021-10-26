@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:primespot/Screens/buyer.dart';
+import 'package:flutter/rendering.dart';
+import 'package:primespot/Registration/BuyerRegistration.dart';
 import 'package:primespot/Screens/home.dart';
+import 'package:primespot/Registration/SellerRegistration.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:primespot/Screens/SplashScreen.dart';
 
@@ -19,10 +21,7 @@ Future<void> main() async {
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'PrimeSpot',
-      // routes: {
-      //   '/': (context) => SplashScreen(),
-      // },
       home: isLoggedIn == null
-          ? (seller ? HomeScreen() : BuyerScreen())
+          ? (seller ? SellerRegistration() : BuyerRegistration())
           : SplashScreen()));
 }

@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-
 import 'package:primespot/Screens/firstpage.dart';
 
-class Seller extends StatefulWidget {
-  const Seller({Key? key}) : super(key: key);
+class BuyerRegistration extends StatefulWidget {
+  const BuyerRegistration({Key? key}) : super(key: key);
 
   @override
-  _SellerState createState() => _SellerState();
+  _BuyerRegistrationState createState() => _BuyerRegistrationState();
 }
 
-class _SellerState extends State<Seller> {
-  Color _iconColor1 = Colors.white;
-  Color _iconColor2 = Colors.white;
-
+class _BuyerRegistrationState extends State<BuyerRegistration> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -21,7 +17,7 @@ class _SellerState extends State<Seller> {
             title: Padding(
               padding: const EdgeInsets.only(left: 70.0),
               child: Text(
-                'Register',
+                'BuyerRegistration',
                 style: TextStyle(
                   letterSpacing: 2.0,
                   fontSize: 25.0,
@@ -32,12 +28,12 @@ class _SellerState extends State<Seller> {
             ),
             backgroundColor: Colors.black),
         body: Container(
-          height: 670.0,
+          height: 700.0,
           color: Colors.black,
           child: SingleChildScrollView(
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
+                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 50.0),
               child: Column(
                 children: [
                   SizedBox(
@@ -88,7 +84,7 @@ class _SellerState extends State<Seller> {
                         style:
                             TextStyle(color: Colors.white, letterSpacing: 1.5),
                         decoration: InputDecoration(
-                          hintText: "Shop Name",
+                          hintText: "Email Address",
                           hintStyle: TextStyle(
                               color: Colors.white,
                               fontSize: 18.0,
@@ -97,7 +93,7 @@ class _SellerState extends State<Seller> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 20.0),
                             child: Icon(
-                              Icons.shop_outlined,
+                              Icons.email_outlined,
                               color: Colors.white,
                             ),
                           ),
@@ -116,7 +112,7 @@ class _SellerState extends State<Seller> {
                             borderRadius: BorderRadius.circular(25.0),
                           ),
                         ),
-                        keyboardType: TextInputType.name,
+                        keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
                       ),
                     ),
@@ -126,11 +122,11 @@ class _SellerState extends State<Seller> {
                     width: 350,
                     child: Center(
                       child: TextField(
-                        cursorColor: Colors.amber,
                         style:
                             TextStyle(color: Colors.white, letterSpacing: 1.5),
+                        cursorColor: Colors.amber,
                         decoration: InputDecoration(
-                          hintText: "Shop Address",
+                          hintText: "Password",
                           hintStyle: TextStyle(
                               color: Colors.white,
                               fontSize: 18.0,
@@ -139,7 +135,7 @@ class _SellerState extends State<Seller> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 20.0),
                             child: Icon(
-                              Icons.home,
+                              Icons.password_outlined,
                               color: Colors.white,
                             ),
                           ),
@@ -158,7 +154,7 @@ class _SellerState extends State<Seller> {
                             borderRadius: BorderRadius.circular(25.0),
                           ),
                         ),
-                        keyboardType: TextInputType.streetAddress,
+                        keyboardType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.next,
                       ),
                     ),
@@ -211,10 +207,50 @@ class _SellerState extends State<Seller> {
                     child: Center(
                       child: TextField(
                         cursorColor: Colors.amber,
-                        style: TextStyle(
-                            color: Colors.white,
-                            letterSpacing: 1.5,
-                            fontSize: 20.0),
+                        style:
+                            TextStyle(color: Colors.white, letterSpacing: 1.5),
+                        decoration: InputDecoration(
+                          hintText: "Address",
+                          hintStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.0,
+                              letterSpacing: 1.5),
+                          prefixIcon: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Icon(
+                              Icons.home,
+                              color: Colors.white,
+                            ),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20.0),
+                            ),
+                            borderSide: const BorderSide(
+                              color: Colors.white,
+                              width: 3.0,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Colors.amber, width: 3.5),
+                            borderRadius: BorderRadius.circular(25.0),
+                          ),
+                        ),
+                        keyboardType: TextInputType.streetAddress,
+                        textInputAction: TextInputAction.next,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 80,
+                    width: 350,
+                    child: Center(
+                      child: TextField(
+                        cursorColor: Colors.amber,
+                        style:
+                            TextStyle(color: Colors.white, letterSpacing: 1.5),
                         decoration: InputDecoration(
                           hintText: "City",
                           hintStyle: TextStyle(
@@ -292,70 +328,6 @@ class _SellerState extends State<Seller> {
                     ),
                   ),
                   SizedBox(
-                    height: 15.0,
-                  ),
-                  Container(
-                    height: 55.0,
-                    width: 350.0,
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 3.5,
-                      ),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Row(
-                      children: [
-                        SizedBox(width: 15),
-                        Icon(
-                          Icons.delivery_dining_outlined,
-                          color: Colors.white,
-                        ),
-                        SizedBox(width: 12.0),
-                        Text(
-                          'Home Delivery',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18.0,
-                              letterSpacing: 1.5),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                _iconColor1 = Colors.green;
-                                _iconColor2 = Colors.white;
-                              });
-                            },
-                            icon: Icon(
-                              Icons.check_box,
-                              color: _iconColor1,
-                              size: 28.0,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                _iconColor2 = Colors.red;
-                                _iconColor1 = Colors.white;
-                              });
-                            },
-                            icon: Icon(
-                              Icons.cancel,
-                              color: _iconColor2,
-                              size: 28.0,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
                     height: 50.0,
                   ),
                   SizedBox(
@@ -394,6 +366,48 @@ class _SellerState extends State<Seller> {
           ),
         ),
       ),
+// =======
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:flutter/material.dart';
+
+// import 'firstpage.dart';
+
+// class BuyerScreen extends StatefulWidget {
+//   const BuyerScreen({Key? key}) : super(key: key);
+
+//   @override
+//   _BuyerScreenState createState() => _BuyerScreenState();
+// }
+
+// class _BuyerScreenState extends State<BuyerScreen> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Center(
+//           child: Text('Buyer Page'),
+//         ),
+//         actions: [
+//           IconButton(
+//               onPressed: () {
+//                 FirebaseAuth.instance.signOut();
+//                 Navigator.pushAndRemoveUntil(
+//                     context,
+//                     MaterialPageRoute(builder: (context) => FirstPage()),
+//                     (route) => false);
+//               },
+//               icon: Icon(Icons.logout))
+//         ],
+//       ),
+//       body: SafeArea(
+//           child: Column(
+//         children: [
+//           Container(
+//             child: Text('Welcome to Buyer\'s page!!'),
+//           )
+//         ],
+//       )),
+// >>>>>>> main
     );
   }
 }

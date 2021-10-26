@@ -66,7 +66,7 @@ class LoginScreenState extends State<LoginScreen> {
                       border: Border.all(color: Colors.black, width: 2.5),
                       borderRadius: BorderRadius.circular(30.0),
                       image: DecorationImage(
-                        image: AssetImage('assets/access_adobespark (1).jpg'),
+                        image: AssetImage('assets/Login.jpg'),
                       )),
                 ),
                 Container(
