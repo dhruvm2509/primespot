@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:primespot/Dashboard/BuyerDashboard.dart';
 import 'package:primespot/Screens/firstpage.dart';
 
 class BuyerRegistration extends StatefulWidget {
@@ -9,6 +12,28 @@ class BuyerRegistration extends StatefulWidget {
 }
 
 class _BuyerRegistrationState extends State<BuyerRegistration> {
+  final _name = TextEditingController();
+  final _address = TextEditingController();
+  final _city = TextEditingController();
+  final _pincode = TextEditingController();
+  final _mobile = TextEditingController();
+
+  void saveData() async {
+    await FirebaseFirestore.instance
+        .collection("Buyer")
+        .doc(FirebaseAuth.instance.currentUser!.phoneNumber)
+        .update({
+      "Name": _name.text,
+      "Address": _address.text,
+      "City": _city.text,
+      "PinCode": _pincode.text,
+      "Mobile": _mobile.text,
+    });
+
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => BuyerDashboard()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -41,6 +66,7 @@ class _BuyerRegistrationState extends State<BuyerRegistration> {
                     width: 350,
                     child: Center(
                       child: TextField(
+                        controller: _name,
                         cursorColor: Colors.amber,
                         style:
                             TextStyle(color: Colors.white, letterSpacing: 1.5),
@@ -80,90 +106,7 @@ class _BuyerRegistrationState extends State<BuyerRegistration> {
                     width: 350,
                     child: Center(
                       child: TextField(
-                        cursorColor: Colors.amber,
-                        style:
-                            TextStyle(color: Colors.white, letterSpacing: 1.5),
-                        decoration: InputDecoration(
-                          hintText: "Email Address",
-                          hintStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18.0,
-                              letterSpacing: 1.5),
-                          prefixIcon: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Icon(
-                              Icons.email_outlined,
-                              color: Colors.white,
-                            ),
-                          ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(20.0),
-                            ),
-                            borderSide: const BorderSide(
-                              color: Colors.white,
-                              width: 3.0,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: Colors.amber, width: 3.5),
-                            borderRadius: BorderRadius.circular(25.0),
-                          ),
-                        ),
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 80,
-                    width: 350,
-                    child: Center(
-                      child: TextField(
-                        style:
-                            TextStyle(color: Colors.white, letterSpacing: 1.5),
-                        cursorColor: Colors.amber,
-                        decoration: InputDecoration(
-                          hintText: "Password",
-                          hintStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18.0,
-                              letterSpacing: 1.5),
-                          prefixIcon: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Icon(
-                              Icons.password_outlined,
-                              color: Colors.white,
-                            ),
-                          ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(20.0),
-                            ),
-                            borderSide: const BorderSide(
-                              color: Colors.white,
-                              width: 3.0,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: Colors.amber, width: 3.5),
-                            borderRadius: BorderRadius.circular(25.0),
-                          ),
-                        ),
-                        keyboardType: TextInputType.visiblePassword,
-                        textInputAction: TextInputAction.next,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 80,
-                    width: 350,
-                    child: Center(
-                      child: TextField(
+                        controller: _mobile,
                         cursorColor: Colors.amber,
                         style:
                             TextStyle(color: Colors.white, letterSpacing: 1.5),
@@ -206,6 +149,7 @@ class _BuyerRegistrationState extends State<BuyerRegistration> {
                     width: 350,
                     child: Center(
                       child: TextField(
+                        controller: _address,
                         cursorColor: Colors.amber,
                         style:
                             TextStyle(color: Colors.white, letterSpacing: 1.5),
@@ -248,6 +192,7 @@ class _BuyerRegistrationState extends State<BuyerRegistration> {
                     width: 350,
                     child: Center(
                       child: TextField(
+                        controller: _city,
                         cursorColor: Colors.amber,
                         style:
                             TextStyle(color: Colors.white, letterSpacing: 1.5),
@@ -290,6 +235,7 @@ class _BuyerRegistrationState extends State<BuyerRegistration> {
                     width: 350,
                     child: Center(
                       child: TextField(
+                        controller: _pincode,
                         cursorColor: Colors.amber,
                         style:
                             TextStyle(color: Colors.white, letterSpacing: 1.5),
@@ -353,10 +299,16 @@ class _BuyerRegistrationState extends State<BuyerRegistration> {
                             borderRadius: BorderRadius.circular(40.0)),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => FirstPage()));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => FirstPage()));
+                        print(_name.text);
+                        print(_city.text);
+                        print(_address.text);
+                        print(_pincode.text);
+                        print(_mobile.text);
+                        saveData();
                       },
                     ),
                   ),

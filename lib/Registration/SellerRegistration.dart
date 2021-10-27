@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:primespot/Dashboard/SellerDashboard.dart';
 
 import 'package:primespot/Screens/firstpage.dart';
 
@@ -12,6 +15,32 @@ class SellerRegistration extends StatefulWidget {
 class _SellerRegistrationState extends State<SellerRegistration> {
   Color _iconColor1 = Colors.white;
   Color _iconColor2 = Colors.white;
+
+  final _name = TextEditingController();
+  final _shopName = TextEditingController();
+  final _shopAddress = TextEditingController();
+  final _city = TextEditingController();
+  final _pincode = TextEditingController();
+  final _mobile = TextEditingController();
+  String delivery = "";
+
+  void saveData() async {
+    await FirebaseFirestore.instance
+        .collection("Seller")
+        .doc(FirebaseAuth.instance.currentUser!.phoneNumber)
+        .update({
+      "Name": _name.text,
+      "ShopName": _shopName.text,
+      "ShopAddress": _shopAddress.text,
+      "City": _city.text,
+      "PinCode": _pincode.text,
+      "Mobile": _mobile.text,
+      "Delivery": delivery,
+    });
+
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => SellerDashboard()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +74,7 @@ class _SellerRegistrationState extends State<SellerRegistration> {
                     width: 350,
                     child: Center(
                       child: TextField(
+                        controller: _name,
                         cursorColor: Colors.amber,
                         style:
                             TextStyle(color: Colors.white, letterSpacing: 1.5),
@@ -84,6 +114,7 @@ class _SellerRegistrationState extends State<SellerRegistration> {
                     width: 350,
                     child: Center(
                       child: TextField(
+                        controller: _shopName,
                         cursorColor: Colors.amber,
                         style:
                             TextStyle(color: Colors.white, letterSpacing: 1.5),
@@ -126,6 +157,7 @@ class _SellerRegistrationState extends State<SellerRegistration> {
                     width: 350,
                     child: Center(
                       child: TextField(
+                        controller: _shopAddress,
                         cursorColor: Colors.amber,
                         style:
                             TextStyle(color: Colors.white, letterSpacing: 1.5),
@@ -168,6 +200,7 @@ class _SellerRegistrationState extends State<SellerRegistration> {
                     width: 350,
                     child: Center(
                       child: TextField(
+                        controller: _mobile,
                         cursorColor: Colors.amber,
                         style:
                             TextStyle(color: Colors.white, letterSpacing: 1.5),
@@ -210,6 +243,7 @@ class _SellerRegistrationState extends State<SellerRegistration> {
                     width: 350,
                     child: Center(
                       child: TextField(
+                        controller: _city,
                         cursorColor: Colors.amber,
                         style: TextStyle(
                             color: Colors.white,
@@ -254,6 +288,7 @@ class _SellerRegistrationState extends State<SellerRegistration> {
                     width: 350,
                     child: Center(
                       child: TextField(
+                        controller: _pincode,
                         cursorColor: Colors.amber,
                         style:
                             TextStyle(color: Colors.white, letterSpacing: 1.5),
@@ -325,6 +360,7 @@ class _SellerRegistrationState extends State<SellerRegistration> {
                           child: IconButton(
                             onPressed: () {
                               setState(() {
+                                delivery = "Yes";
                                 _iconColor1 = Colors.green;
                                 _iconColor2 = Colors.white;
                               });
@@ -341,6 +377,7 @@ class _SellerRegistrationState extends State<SellerRegistration> {
                           child: IconButton(
                             onPressed: () {
                               setState(() {
+                                delivery = "NO";
                                 _iconColor2 = Colors.red;
                                 _iconColor1 = Colors.white;
                               });
@@ -381,10 +418,7 @@ class _SellerRegistrationState extends State<SellerRegistration> {
                             borderRadius: BorderRadius.circular(40.0)),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => FirstPage()));
+                        saveData();
                       },
                     ),
                   ),
