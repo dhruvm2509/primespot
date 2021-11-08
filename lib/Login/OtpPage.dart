@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:primespot/Dashboard/BuyerDashboard.dart';
 import 'package:primespot/Dashboard/SellerDashboard.dart';
+import 'package:primespot/Home/home_buyer.dart';
+import 'package:primespot/Home/home_seller.dart';
 import 'package:primespot/Registration/BuyerRegistration.dart';
 import 'package:primespot/Screens/home.dart';
 import 'package:primespot/Registration/SellerRegistration.dart';
@@ -87,7 +89,7 @@ class _OTPScreenState extends State<OTPScreen> {
           if (value.exists) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SellerDashboard()),
+              MaterialPageRoute(builder: (context) => HomeSeller()),
             );
           } else {
             FirebaseFirestore.instance
@@ -118,7 +120,7 @@ class _OTPScreenState extends State<OTPScreen> {
           if (value.exists) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BuyerDashboard()),
+              MaterialPageRoute(builder: (context) => HomeBuyer()),
             );
           } else {
             FirebaseFirestore.instance
