@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
-import 'package:primespot/Dashboard/BuyerDashboard.dart';
-import 'package:primespot/Dashboard/SellerDashboard.dart';
 import 'package:primespot/Home/home_buyer.dart';
 import 'package:primespot/Home/home_seller.dart';
 import 'package:primespot/Registration/BuyerRegistration.dart';
-import 'package:primespot/Screens/home.dart';
 import 'package:primespot/Registration/SellerRegistration.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -87,10 +84,10 @@ class _OTPScreenState extends State<OTPScreen> {
           .then(
         (value) {
           if (value.exists) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HomeSeller()),
-            );
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => HomeSeller()),
+                (route) => false);
           } else {
             FirebaseFirestore.instance
                 .collection("Seller")
@@ -103,10 +100,10 @@ class _OTPScreenState extends State<OTPScreen> {
                 'mobileNumber': '+91' + widget.phone!,
               },
             );
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SellerRegistration()),
-            );
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => SellerRegistration()),
+                (route) => false);
           }
         },
       );
@@ -118,10 +115,10 @@ class _OTPScreenState extends State<OTPScreen> {
           .then(
         (value) {
           if (value.exists) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HomeBuyer()),
-            );
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => HomeBuyer()),
+                (route) => false);
           } else {
             FirebaseFirestore.instance
                 .collection("Buyer")
@@ -134,10 +131,10 @@ class _OTPScreenState extends State<OTPScreen> {
                 'mobileNumber': '+91' + widget.phone!,
               },
             );
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => BuyerRegistration()),
-            );
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => BuyerRegistration()),
+                (route) => false);
           }
         },
       );

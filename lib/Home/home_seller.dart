@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:primespot/Dashboard/SellerDashboard.dart';
-import 'package:primespot/Profile/BuyerProfile.dart';
 import 'package:primespot/Profile/SellerProfile.dart';
 
 class HomeSeller extends StatefulWidget {
@@ -32,12 +30,13 @@ class _HomeSellerState extends State<HomeSeller> {
 
   int currenttab = 0;
   final List<Widget> screen = [
-    SellerDashboard(),
+    SellerDashboard(FirebaseAuth.instance.currentUser!.phoneNumber),
     SellerProfile(FirebaseAuth.instance.currentUser!.phoneNumber),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = SellerDashboard();
+  Widget currentScreen =
+      SellerDashboard(FirebaseAuth.instance.currentUser!.phoneNumber);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +50,8 @@ class _HomeSellerState extends State<HomeSeller> {
         onPressed: () {
           setState(() {
             currenttab = 0;
-            currentScreen = SellerDashboard();
+            currentScreen =
+                SellerDashboard(FirebaseAuth.instance.currentUser!.phoneNumber);
           });
         },
       ),

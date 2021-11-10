@@ -540,7 +540,7 @@ class MapScreenState extends State<SellerProfile>
                         newCity != null &&
                         newPinCode != null &&
                         newMobileNumber != null) {
-                      print("checking");
+                      // print("checking");
                       // var firebaseUser = FirebaseAuth.instance.currentUser;
                       FirebaseFirestore.instance
                           .collection("Seller")
