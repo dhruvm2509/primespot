@@ -38,9 +38,15 @@ class _ProductCardState extends State<ProductCard> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               ListTile(
-                  title: Text(
-                    ' ${widget.products.productName}',
-                    style: TextStyle(fontSize: 20),
+                  title: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      ' ${widget.products.productName}',
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic),
+                    ),
                   ),
                   subtitle: Padding(
                     padding: const EdgeInsets.all(8.0),
