@@ -3,8 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:primespot/Dashboard/SellerDashboard.dart';
 
-import 'package:primespot/Screens/firstpage.dart';
-
 class SellerRegistration extends StatefulWidget {
   const SellerRegistration({Key? key}) : super(key: key);
 
@@ -39,7 +37,10 @@ class _SellerRegistrationState extends State<SellerRegistration> {
     });
 
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => SellerDashboard()));
+        context,
+        MaterialPageRoute(
+            builder: (context) => SellerDashboard(
+                FirebaseAuth.instance.currentUser!.phoneNumber)));
   }
 
   @override
