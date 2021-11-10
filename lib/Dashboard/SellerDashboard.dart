@@ -56,12 +56,6 @@ class _SellerDashboardState extends State<SellerDashboard> {
     });
   }
 
-  void _onDropDownChanged(String val) {
-    setState(() {
-      this.category = val;
-    });
-  }
-
   List<Products> allProducts = [];
 
   void initState() {
@@ -120,7 +114,7 @@ class _SellerDashboardState extends State<SellerDashboard> {
                 padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 0.0),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.blue),
-                    child: Text("Add Place"),
+                    child: Text("Add Product"),
                     onPressed: () {
                       showDialog(
                         context: context,
