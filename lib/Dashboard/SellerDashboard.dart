@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/gestures.dart';
+
 import 'package:flutter/material.dart';
 import 'package:primespot/Cards/AddProduct.dart';
 import 'package:primespot/Models/Products.dart';
@@ -251,26 +251,28 @@ class _SellerDashboardState extends State<SellerDashboard> {
                                   SizedBox(
                                     height: 5,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 5, horizontal: 30),
-                                    child: DropdownButtonFormField<String>(
-                                      hint: Text('Select Category'),
-                                      value: category,
-                                      isDense: true,
-                                      icon: const Icon(Icons.arrow_downward),
-                                      onChanged: (newValue) {
-                                        setState(() {
-                                          category = newValue;
-                                        });
-                                        print(category);
-                                      },
-                                      items: Category.map((String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Text(value),
-                                        );
-                                      }).toList(),
+                                  Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 5, horizontal: 30),
+                                      child: DropdownButtonFormField<String>(
+                                        hint: Text('Select Category'),
+                                        value: category,
+                                        isDense: true,
+                                        icon: const Icon(Icons.arrow_downward),
+                                        onChanged: (newValue) {
+                                          setState(() {
+                                            category = newValue;
+                                          });
+                                          print(category);
+                                        },
+                                        items: Category.map((String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Text(value),
+                                          );
+                                        }).toList(),
+                                      ),
                                     ),
                                   ),
                                   Padding(
