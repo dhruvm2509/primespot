@@ -124,14 +124,14 @@ class _SellerDashboardState extends State<SellerDashboard> {
                                 borderRadius: BorderRadius.circular(40)),
                             elevation: 16,
                             child: Container(
-                              height: 600.0,
+                              height: 550.0,
                               width: 400.0,
                               child: ListView(
                                 children: <Widget>[
                                   SizedBox(height: 20),
                                   Center(
                                     child: Text(
-                                      "Register Place",
+                                      "Register Your Product",
                                       style: TextStyle(
                                           fontSize: 24,
                                           color: Colors.blue,
@@ -274,31 +274,8 @@ class _SellerDashboardState extends State<SellerDashboard> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        30.0, 10.0, 30.0, 0.0),
-                                    child: Text(
-                                      'Upload Image',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 0, horizontal: 30),
-                                      child: (TextFormField(
-                                        key: ValueKey('email'),
-                                        validator: (value) {
-                                          if (value == null ||
-                                              !value.contains('@')) {
-                                            return 'Please enter a valid email address';
-                                          }
-                                          return null;
-                                        },
-                                      ))),
-                                  Padding(
                                       padding: EdgeInsets.fromLTRB(
-                                          30.0, 5.0, 30.0, 40.0),
+                                          30.0, 25.0, 30.0, 10.0),
                                       child: ElevatedButton(
                                         child: Text('Submit'),
                                         onPressed: addProduct,
