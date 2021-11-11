@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:primespot/product_details/product_details.dart';
+import 'package:primespot/Cards/ProductItem.dart';
+import 'package:primespot/Models/ProductItem.dart';
 
 class Mobile extends StatefulWidget {
   const Mobile({Key? key}) : super(key: key);
@@ -16,10 +19,61 @@ class _MobileState extends State<Mobile> {
     'https://uidesign.gbtcdn.com/GB/image/2019/20190802_11705/banner.jpg?imbypass=true',
     'https://media-eng.dhakatribune.com/uploads/2018/07/samsung-accessories-edited-1532008683956.jpg',
     'https://images.dailyobjects.com/marche/assets/images/homepage/desktop/cases-banner-desktop-update.jpg?tr=cm-pad_crop,w-412,dpr-2',
-    'https://zapvi.in/wp-content/uploads/2021/03/2.png',
+    'https://static.india.com/wp-content/uploads/2021/04/oppo-smartphone.jpg',
   ];
 
+  List<ProductItem> allProducts = [];
   int _currentIndex = 0;
+
+  Future fetchMobileservices() async {
+    List<String> uid = [];
+
+    String? buyerPinCode;
+
+    FirebaseFirestore.instance
+        .collection('Buyer')
+        .doc(FirebaseAuth.instance.currentUser!.phoneNumber)
+        .get()
+        .then((value) {
+      buyerPinCode = value['PinCode'];
+    });
+
+    final snapshot = await FirebaseFirestore.instance
+        .collection('Seller')
+        .where('PinCode', isEqualTo: buyerPinCode)
+        .get();
+    snapshot.docs.forEach((doc) {
+      uid.add(doc.data()['mobileNumber']);
+      //print(doc.data()['mobileNumber']);
+    });
+
+    for (int i = 0; i < uid.length; i++) {
+      print(uid[i]);
+
+      final snapshot = await FirebaseFirestore.instance
+          .collection('Seller/${uid[i]}/Products')
+          .where('Category', isEqualTo: "Mobile Accessories")
+          .get();
+
+      snapshot.docs.forEach((doc) {
+        // print(doc.data());
+
+        setState(() {
+          allProducts.add(ProductItem.fromMap(doc.data()));
+        });
+        // list.add(ProductItem.fromMap(doc.data()));
+      });
+      // print(list.length);
+    }
+
+    print(allProducts);
+  }
+
+  void initState() {
+    super.initState();
+
+    fetchMobileservices();
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,53 +167,31 @@ class _MobileState extends State<Mobile> {
           SizedBox(height: 15.0),
           Padding(
             padding: const EdgeInsets.only(right: 180.0),
-            child: Column(
-              children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Product_details()));
-                  },
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.0),
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  'https://i.guim.co.uk/img/media/b5e472b808412cac4de1295aec1a7f31a5e507bc/519_118_3793_2276/master/3793.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=8ab8c57927e131b66aa68d0a0b6625bb'))),
-                      height: 160.0,
-                      width: 160.0,
-                    ),
-                    shadowColor: Colors.grey,
-                    elevation: 10.0,
-                  ),
-                ),
-                SizedBox(
-                  height: 5.0,
-                ),
-                Text(
-                  'Samsung Galaxy EarBuds',
-                  style: TextStyle(
-                      fontSize: 15.0,
-                      letterSpacing: 1.0,
-                      fontWeight: FontWeight.w900),
-                ),
-                SizedBox(
-                  height: 5.0,
-                ),
-                Text(
-                  '2500',
-                  style: TextStyle(
-                      fontSize: 15.0,
-                      letterSpacing: 1.0,
-                      fontWeight: FontWeight.w900),
-                )
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  RefreshIndicator(
+                      child: Container(
+                        height: 400,
+                        child: ListView.builder(
+                            padding: const EdgeInsets.all(8),
+                            itemCount: allProducts.length,
+                            itemBuilder: (context, index) {
+                              return ProductCardItem(
+                                products: allProducts[index],
+                              );
+                            }),
+                      ),
+                      onRefresh: () {
+                        return Future.delayed(
+                          Duration(seconds: 1),
+                          () {
+                            initState();
+                          },
+                        );
+                      })
+                ],
+              ),
             ),
           ),
         ],
