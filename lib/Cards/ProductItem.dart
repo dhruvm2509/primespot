@@ -30,10 +30,11 @@ class _ProductCardItemState extends State<ProductCardItem> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20.0),
                     image: DecorationImage(
-                        image: NetworkImage(
-                            'https://i.guim.co.uk/img/media/b5e472b808412cac4de1295aec1a7f31a5e507bc/519_118_3793_2276/master/3793.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=8ab8c57927e131b66aa68d0a0b6625bb'))),
+                      image: NetworkImage(
+                          'https://www.mytrendyphone.eu/images/Haylou-LS02-Waterproof-Smartwatch-with-Heart-Rate-Black-6971664930443-11092020-01-p.jpg'),
+                    )),
                 height: 160.0,
-                width: 160.0,
+                width: double.infinity,
               ),
               shadowColor: Colors.grey,
               elevation: 10.0,
