@@ -166,13 +166,13 @@ class _MedicinesState extends State<Medicines> {
           ),
           SizedBox(height: 15.0),
           Padding(
-            padding: const EdgeInsets.only(right: 180.0),
+            padding: const EdgeInsets.only(right: 10.0),
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 350,
+                        height: 380,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
                             itemCount: allProducts.length,

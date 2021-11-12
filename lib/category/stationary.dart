@@ -166,7 +166,7 @@ class _StationaryState extends State<Stationary> {
           ),
           SizedBox(height: 15.0),
           Padding(
-            padding: const EdgeInsets.only(right: 180.0),
+            padding: const EdgeInsets.only(right: 10.0),
             child: SingleChildScrollView(
               child: Column(
                 children: [

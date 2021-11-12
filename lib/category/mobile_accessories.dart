@@ -80,29 +80,6 @@ class _MobileState extends State<Mobile> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 300),
-            child: Container(
-              width: 60.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(25.0),
-                    bottomRight: Radius.circular(25.0)),
-                color: Colors.amber,
-              ),
-              child: IconButton(
-                onPressed: () => Navigator.pop(context,
-                    MaterialPageRoute(builder: (context) => BuyerDashboard())),
-                icon: Icon(
-                  Icons.chevron_left,
-                  color: Colors.black,
-                  size: 35.0,
-                ),
-              ),
-            ),
-          ),
-        ],
         title: Center(
           child: Text(
             'Mobile Accessories',
@@ -196,7 +173,7 @@ class _MobileState extends State<Mobile> {
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 350,
+                        height: 380,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
                             itemCount: allProducts.length,

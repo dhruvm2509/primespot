@@ -25,6 +25,7 @@ class _SellerDashboardState extends State<SellerDashboard> {
   String sellerName = "";
   String sellerId = "";
   String? documentId;
+  String? imageUrl;
 
   List<String> Category = [
     'Mobile Accessories',
@@ -47,7 +48,8 @@ class _SellerDashboardState extends State<SellerDashboard> {
       'Price': price,
       'Category': category,
       'mobileNumber': mobileNumber,
-      'sellerId': sellerId
+      'sellerId': sellerId,
+      'imageUrl': imageUrl,
     }).then((value) {
       print("$value added products value+++++++++++++++++++++++++++++++");
       Navigator.pop(context);
@@ -275,6 +277,30 @@ class _SellerDashboardState extends State<SellerDashboard> {
                                       ),
                                     ),
                                   ),
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(
+                                        30.0, 10.0, 30.0, 0.0),
+                                    child: Text(
+                                      'Enter Product Image URL',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 0, horizontal: 30),
+                                      child: (TextFormField(
+                                        onChanged: (text) {
+                                          imageUrl = text;
+                                        },
+                                        validator: (value) {
+                                          if (value == null) {
+                                            return 'Please enter a valid mobile number';
+                                          }
+                                          return null;
+                                        },
+                                      ))),
                                   Padding(
                                       padding: EdgeInsets.fromLTRB(
                                           30.0, 25.0, 30.0, 10.0),
