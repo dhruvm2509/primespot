@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:primespot/Cards/ProductItem.dart';
+import 'package:primespot/Dashboard/BuyerDashboard.dart';
 import 'package:primespot/Models/ProductItem.dart';
 
 class Mobile extends StatefulWidget {
@@ -79,6 +80,29 @@ class _MobileState extends State<Mobile> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 300),
+            child: Container(
+              width: 60.0,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(25.0),
+                    bottomRight: Radius.circular(25.0)),
+                color: Colors.amber,
+              ),
+              child: IconButton(
+                onPressed: () => Navigator.pop(context,
+                    MaterialPageRoute(builder: (context) => BuyerDashboard())),
+                icon: Icon(
+                  Icons.chevron_left,
+                  color: Colors.black,
+                  size: 35.0,
+                ),
+              ),
+            ),
+          ),
+        ],
         title: Center(
           child: Text(
             'Mobile Accessories',
@@ -166,13 +190,13 @@ class _MobileState extends State<Mobile> {
           ),
           SizedBox(height: 15.0),
           Padding(
-            padding: const EdgeInsets.only(right: 180.0),
+            padding: const EdgeInsets.only(right: 10.0),
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 400,
+                        height: 350,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
                             itemCount: allProducts.length,

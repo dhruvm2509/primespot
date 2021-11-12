@@ -79,6 +79,10 @@ flutter:
       fonts:
         - asset: fonts/Georama-Regular.ttf
         - asset: fonts/Georama-Medium.ttf
+    - family: NotoSerif
+      fonts:
+        - asset: fonts/NotoSerif-BoldItalic.ttf
+          
   #         style: italic
   #   - family: JacquesFrancoisShadow-Regular
   #     fonts:
