@@ -156,24 +156,24 @@ class _GroceryState extends State<Grocery> {
             }).toList(),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 200.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text(
               'Best Sellers',
               style: TextStyle(
-                  fontSize: 23.0,
+                  fontSize: 33.0,
                   letterSpacing: 2.0,
                   fontWeight: FontWeight.w900),
             ),
           ),
           SizedBox(height: 15.0),
           Padding(
-            padding: const EdgeInsets.only(right: 180.0),
+            padding: const EdgeInsets.only(right: 10.0),
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 350,
+                        height: 380,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
                             itemCount: allProducts.length,

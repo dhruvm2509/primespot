@@ -4,14 +4,15 @@ class Products {
   int price = 0;
   String category = "";
   int mobileNumber = 0;
+  String imageUrl = "";
 
-  Products({
-    required this.productName,
-    required this.productDescription,
-    required this.price,
-    required this.category,
-    required this.mobileNumber,
-  });
+  Products(
+      {required this.productName,
+      required this.productDescription,
+      required this.price,
+      required this.category,
+      required this.mobileNumber,
+      required this.imageUrl});
 
   Map toMap(Products products) {
     var data = Map<String, dynamic>();
@@ -20,6 +21,7 @@ class Products {
     data['Price'] = products.price;
     data['Category'] = products.category;
     data['mobileNumber'] = products.mobileNumber;
+    data['imageUrl'] = products.imageUrl;
     return data;
   }
 
@@ -30,5 +32,6 @@ class Products {
     this.productDescription = mapData['ProductDescription'];
     this.mobileNumber = mapData['mobileNumber'];
     this.price = mapData['Price'];
+    this.imageUrl = mapData['imageUrl'];
   }
 }
