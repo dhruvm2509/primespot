@@ -36,7 +36,14 @@ class _Product_detailsState extends State<Product_details> {
       'https://www.mytrendyphone.eu/images/Haylou-LS02-Waterproof-Smartwatch-with-Heart-Rate-Black-6971664930443-11092020-01-p.jpg';
 
   final razorpay = Razorpay();
+  String buyerName = "";
   void initState() {
+    FirebaseFirestore.instance
+        .collection('Buyer')
+        .doc('${FirebaseAuth.instance.currentUser!.phoneNumber}')
+        .get()
+        .then((value) => buyerName = value['Name']);
+
     super.initState();
     razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, externalWallet);
     razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, paySuccess);
@@ -113,6 +120,72 @@ class _Product_detailsState extends State<Product_details> {
     } catch (e) {
       print(e.toString());
     }
+  }
+
+  CollectionReference users = FirebaseFirestore.instance
+      .collection('Buyer')
+      .doc(FirebaseAuth.instance.currentUser!.phoneNumber)
+      .collection('Wishlist');
+
+  Future<void> addToWishlist() async {
+    final QuerySnapshot result = await FirebaseFirestore.instance
+        .collection(
+            'Buyer/${FirebaseAuth.instance.currentUser!.phoneNumber}/Wishlist')
+        .where('ProductDescription',
+            isEqualTo: widget.products.productDescription)
+        .get();
+
+    final List<DocumentSnapshot> documents = result.docs;
+    if (documents.length == 0) {
+      users
+          .doc('${widget.products.productName + widget.products.sellerId}')
+          .set({
+        'ProductName': widget.products.productName,
+        'ProductDescription': widget.products.productDescription,
+        'Price': widget.products.price,
+        'Category': widget.products.category,
+        'mobileNumber': widget.products.mobileNumber,
+        'sellerId': widget.products.sellerId,
+        'imageUrl': widget.products.imageUrl,
+      }).then((_) {
+        print(" added products to your wishlist");
+        // Navigator.pop(context);
+      }).catchError((error) {
+        print(error);
+      });
+    } else {
+      print('Product Already exists in wishlist');
+    }
+
+    addToNotifications();
+  }
+
+  Future addToNotifications() async {
+    CollectionReference notify = FirebaseFirestore.instance
+        .collection('Seller')
+        .doc('${widget.products.sellerId}')
+        .collection('Notifications');
+
+    notify
+        .doc(
+            '${widget.products.productName}${FirebaseAuth.instance.currentUser!.phoneNumber}')
+        .set({
+      'ProductName': widget.products.productName,
+      'ProductDescription': widget.products.productDescription,
+      'Price': widget.products.price,
+      'Category': widget.products.category,
+      'mobileNumber': FirebaseAuth.instance.currentUser!.phoneNumber,
+      'buyerId': FirebaseAuth.instance.currentUser!.phoneNumber,
+      'imageUrl': widget.products.imageUrl,
+      'BuyerName': '$buyerName',
+      'Message':
+          "Your Product ${widget.products.productName} has been added to Wishlist",
+    }).then((_) {
+      print(" added Notification");
+      // Navigator.pop(context);
+    }).catchError((error) {
+      print(error);
+    });
   }
 
   @override
@@ -224,6 +297,12 @@ class _Product_detailsState extends State<Product_details> {
                                     ),
                                   ),
                                 ],
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  addToWishlist();
+                                },
+                                child: Icon(Icons.favorite),
                               ),
                             ],
                           ),

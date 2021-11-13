@@ -30,7 +30,10 @@ class _BuyerRegistrationState extends State<BuyerRegistration> {
     });
 
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => BuyerDashboard()));
+        context,
+        MaterialPageRoute(
+            builder: (context) => BuyerDashboard(
+                FirebaseAuth.instance.currentUser!.phoneNumber)));
   }
 
   @override
