@@ -151,8 +151,12 @@ class _Product_detailsState extends State<Product_details> {
                   color: Colors.yellow,
                 ),
                 child: IconButton(
-                  onPressed: () => Navigator.pop(context,
-                      MaterialPageRoute(builder: (context) => Mobile())),
+                  onPressed: () => Navigator.pop(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Mobile(
+                                uid: [],
+                              ))),
                   icon: Icon(
                     Icons.chevron_left,
                     color: Colors.black,
