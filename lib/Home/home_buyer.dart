@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:primespot/Dashboard/BuyerDashboard.dart';
 import 'package:primespot/Profile/BuyerProfile.dart';
+import 'package:primespot/WishList/wishlist.dart';
 import 'package:primespot/about_us.dart';
 
 class HomeBuyer extends StatefulWidget {
@@ -30,13 +31,14 @@ class _HomeBuyerState extends State<HomeBuyer> {
   }
 
   int currenttab = 0;
-  final List<Widget> screen = [
-    BuyerDashboard(),
-    BuyerProfile(FirebaseAuth.instance.currentUser!.phoneNumber),
-  ];
+  // final List<Widget> screen = [
+  //   BuyerDashboard(),
+  //   BuyerProfile(FirebaseAuth.instance.currentUser!.phoneNumber),
+  // ];
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = BuyerDashboard();
+  Widget currentScreen =
+      BuyerDashboard(FirebaseAuth.instance.currentUser!.phoneNumber);
 
   @override
   Widget build(BuildContext context) {
@@ -59,31 +61,9 @@ class _HomeBuyerState extends State<HomeBuyer> {
                 minWidth: 40,
                 onPressed: () {
                   setState(() {
-                    currentScreen = BuyerProfile(
-                        FirebaseAuth.instance.currentUser!.phoneNumber);
-                    currenttab = 1;
-                  });
-                },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.account_circle,
-                      color: currenttab == 01 ? Colors.amber : Colors.black,
-                    ),
-                    Text('Profile',
-                        style: TextStyle(
-                          color: currenttab == 1 ? Colors.amber : Colors.black,
-                        ))
-                  ],
-                ),
-              ),
-              MaterialButton(
-                minWidth: 40,
-                onPressed: () {
-                  setState(() {
                     currenttab = 0;
-                    currentScreen = BuyerDashboard();
+                    currentScreen = BuyerDashboard(
+                        FirebaseAuth.instance.currentUser!.phoneNumber);
                   });
                 },
                 child: Column(
@@ -104,7 +84,30 @@ class _HomeBuyerState extends State<HomeBuyer> {
                 minWidth: 40,
                 onPressed: () {
                   setState(() {
-                    currentScreen = About_us();
+                    currenttab = 1;
+                    currentScreen = Wishlist();
+                  });
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.add_shopping_cart_rounded,
+                      color: currenttab == 1 ? Colors.amber : Colors.black,
+                    ),
+                    Text('Wishlist',
+                        style: TextStyle(
+                          color: currenttab == 1 ? Colors.amber : Colors.black,
+                        ))
+                  ],
+                ),
+              ),
+              MaterialButton(
+                minWidth: 40,
+                onPressed: () {
+                  setState(() {
+                    currentScreen = BuyerProfile(
+                        FirebaseAuth.instance.currentUser!.phoneNumber);
                     currenttab = 2;
                   });
                 },
@@ -112,12 +115,34 @@ class _HomeBuyerState extends State<HomeBuyer> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
-                      Icons.people_alt_outlined,
+                      Icons.account_circle,
                       color: currenttab == 2 ? Colors.amber : Colors.black,
+                    ),
+                    Text('Profile',
+                        style: TextStyle(
+                          color: currenttab == 2 ? Colors.amber : Colors.black,
+                        ))
+                  ],
+                ),
+              ),
+              MaterialButton(
+                minWidth: 40,
+                onPressed: () {
+                  setState(() {
+                    currentScreen = About_us();
+                    currenttab = 3;
+                  });
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.people_alt_outlined,
+                      color: currenttab == 3 ? Colors.amber : Colors.black,
                     ),
                     Text('About Us',
                         style: TextStyle(
-                          color: currenttab == 2 ? Colors.amber : Colors.black,
+                          color: currenttab == 3 ? Colors.amber : Colors.black,
                         ))
                   ],
                 ),

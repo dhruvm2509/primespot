@@ -8,21 +8,43 @@ import 'package:primespot/category/mobile_accessories.dart';
 import 'package:primespot/category/stationary.dart';
 
 class BuyerDashboard extends StatefulWidget {
-  const BuyerDashboard({Key? key}) : super(key: key);
+  String? documentId;
+  BuyerDashboard(this.documentId);
+  // const BuyerDashboard({Key? key}) : super(key: key);
 
   @override
-  _BuyerDashboardState createState() => _BuyerDashboardState();
+  _BuyerDashboardState createState() => _BuyerDashboardState(documentId);
 }
 
 class _BuyerDashboardState extends State<BuyerDashboard> {
+  String? documentId;
+  _BuyerDashboardState(this.documentId);
   List<String> uid = [];
+  String? buyerName;
 
   void initState() {
     super.initState();
+
+    FirebaseFirestore.instance
+        .collection('Buyer')
+        .doc(documentId)
+        .get()
+        .then((value) {
+      buyerName = value['Name'];
+    });
+
     fetchSellerId();
   }
 
   Future fetchSellerId() async {
+    FirebaseFirestore.instance
+        .collection('Buyer')
+        .doc(documentId)
+        .get()
+        .then((value) {
+      buyerName = value['Name'];
+    });
+
     String? buyerPinCode;
 
     await FirebaseFirestore.instance
@@ -52,18 +74,11 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
-        title: Padding(
-          padding: const EdgeInsets.only(left: 90.0),
-          child: Text(
-            'Buyer Dashboard',
-            style: TextStyle(
-              fontSize: 20.0,
-              color: Colors.white,
-              letterSpacing: 1.5,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-        ),
+
+        title: Center(
+            child: buyerName == null
+                ? Text('Buyer\'s Dashboard')
+                : Text('$buyerName')),
         actions: [
           IconButton(
               onPressed: () {
