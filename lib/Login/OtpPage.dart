@@ -143,61 +143,125 @@ class _OTPScreenState extends State<OTPScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.amber,
-        title: Center(child: Text('OTP Verification')),
-      ),
-      body: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.only(top: 40),
-            child: Center(
-              child: Text(
-                'Verify +91- ${widget.phone}',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
-              ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.amber,
+          title: Padding(
+            padding: const EdgeInsets.only(left: 35.0),
+            child: Text(
+              'OTP Verification',
+              style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 25.0,
+                  letterSpacing: 2.0),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Container(
-              color: Colors.white,
-              margin: const EdgeInsets.all(20.0),
-              padding: const EdgeInsets.all(20.0),
-              child: PinPut(
-                fieldsCount: 6,
-                focusNode: _pinPutFocusNode,
-                controller: _pinPutController,
-                submittedFieldDecoration: _pinPutDecoration.copyWith(
-                  borderRadius: BorderRadius.circular(20.0),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20.0,
+              ),
+              Stack(
+                children: [
+                  Center(
+                    child: Container(
+                      width: 320.0,
+                      height: 300.0,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.yellow,
+                          width: 2.5,
+                        ),
+                        borderRadius: BorderRadius.circular(25.0),
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              'https://tezzbuzz.com/wp-content/uploads/2020/10/security-otp-one-time-password-smartphone-shield_9904-104.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 233.0, left: 35.0),
+                    child: Container(
+                      height: 35.0,
+                      width: 290.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25.0),
+                        color: Colors.yellow,
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Verify +91- ${widget.phone}',
+                          style: TextStyle(
+                              letterSpacing: 2.0,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 26,
+                              color: Colors.black),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Container(
+                child: Text(
+                  'Enter OTP',
+                  style: TextStyle(
+                      letterSpacing: 2.0,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 26,
+                      color: Colors.black),
                 ),
-                onSubmit: (pin) async {
-                  try {
-                    await FirebaseAuth.instance
-                        .signInWithCredential(PhoneAuthProvider.credential(
-                            verificationId: _verificationCode, smsCode: pin))
-                        .then((value) async {
-                      if (value.user != null) {
-                        _phoneVerified();
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Container(
+                  margin: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                  // padding: const EdgeInsets.all(20.0),
+                  child: PinPut(
+                    fieldsCount: 6,
+                    focusNode: _pinPutFocusNode,
+                    controller: _pinPutController,
+                    submittedFieldDecoration: _pinPutDecoration.copyWith(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    onSubmit: (pin) async {
+                      try {
+                        await FirebaseAuth.instance
+                            .signInWithCredential(PhoneAuthProvider.credential(
+                                verificationId: _verificationCode,
+                                smsCode: pin))
+                            .then((value) async {
+                          if (value.user != null) {
+                            _phoneVerified();
+                          }
+                        });
+                      } catch (e) {
+                        FocusScope.of(context).unfocus();
                       }
-                    });
-                  } catch (e) {
-                    FocusScope.of(context).unfocus();
-                  }
-                },
-                selectedFieldDecoration: _pinPutDecoration,
-                pinAnimationType: PinAnimationType.fade,
-                followingFieldDecoration: _pinPutDecoration.copyWith(
-                  borderRadius: BorderRadius.circular(5.0),
-                  border: Border.all(
-                    color: Colors.deepPurpleAccent.withOpacity(.5),
+                    },
+                    selectedFieldDecoration: _pinPutDecoration,
+                    pinAnimationType: PinAnimationType.fade,
+                    followingFieldDecoration: _pinPutDecoration.copyWith(
+                      borderRadius: BorderRadius.circular(5.0),
+                      border: Border.all(
+                        color: Colors.deepPurpleAccent.withOpacity(.5),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          )
-        ],
+            ],
+          ),
+        ),
       ),
     );
   }

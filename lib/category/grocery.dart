@@ -18,12 +18,11 @@ class _GroceryState extends State<Grocery> {
   _GroceryState(this.uid);
   @override
   final List<String> imagesList = [
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT970pg7X_HnpBhmov_hQXGljzTNiFZp4hDPg&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5cY6rVQ1B3yktYiF1VPzbuKhEt7zDx3DxuA&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbp0EFsyqnc5me7a6VDjAbcSThTNC9NtL5xw&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe27RuPt9GgGpNdq5db_haV6QD73rlyrsMag&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIjPNUBeuSOefHmWCDnxnEJ9K3aOvzzn7-oQ&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfMtEWd_kami3TaIMAQ6hIgyYtPI-RXwPk6Q&usqp=CAU',
+    'http://www.ramanmedianetwork.com/wp-content/uploads/2013/11/abdawat.jpg',
+    'https://5.imimg.com/data5/SELLER/Default/2020/10/GA/VM/RI/114649601/dry-fruits-packaging-pouch-500x500.png',
+    'https://cdn.shopify.com/s/files/1/2414/1627/files/Web_Banner_5_e43cba38-9f1a-44a3-9f05-750c93fa6a63_1400x.progressive.jpg?v=1596530507',
+    'https://i.pinimg.com/originals/0d/ec/29/0dec29808c556b597a675079657e1a03.jpg',
+    'https://www.advertgallery.com/wp-content/uploads/2018/02/kissan-indias-favourite-ketchup-now-even-more-tempting-save-rs-20-ad-delhi-times-03-02-2018.png',
   ];
 
   List<ProductItem> allProducts = [];
@@ -53,13 +52,14 @@ class _GroceryState extends State<Grocery> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
-        title: Center(
+        title: Padding(
+          padding: const EdgeInsets.only(left: 30.0),
           child: Text(
-            'Groceries',
+            'Grocery Items',
             style: TextStyle(
-                letterSpacing: 1.6,
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0),
+                letterSpacing: 2.5,
+                fontWeight: FontWeight.w900,
+                fontSize: 25.0),
           ),
         ),
       ),
@@ -128,17 +128,39 @@ class _GroceryState extends State<Grocery> {
               );
             }).toList(),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Best Sellers',
-              style: TextStyle(
-                  fontSize: 33.0,
-                  letterSpacing: 2.0,
-                  fontWeight: FontWeight.w900),
-            ),
+          Row(
+            children: [
+              SizedBox(
+                width: 10.0,
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: 20.0,
+                child: ClipOval(
+                  child: Image(
+                    image: NetworkImage(
+                        'https://img.freepik.com/free-vector/start_53876-25533.jpg?size=338&ext=jpg'),
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 5.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  right: 140.0,
+                ),
+                child: Text(
+                  'Best Sellers',
+                  style: TextStyle(
+                      fontSize: 25.0,
+                      letterSpacing: 2.0,
+                      fontWeight: FontWeight.w900),
+                ),
+              ),
+            ],
           ),
-          SizedBox(height: 15.0),
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: SingleChildScrollView(
@@ -146,7 +168,7 @@ class _GroceryState extends State<Grocery> {
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 380,
+                        height: 350,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
                             itemCount: allProducts.length,

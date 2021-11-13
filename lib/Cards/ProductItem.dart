@@ -29,55 +29,64 @@ class _ProductCardItemState extends State<ProductCardItem> {
                         builder: (context) =>
                             Product_details(products: widget.products)));
               },
-              child: Card(
-                color: Colors.amberAccent,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.0),
-                          image: DecorationImage(
+              child: Container(
+                padding: EdgeInsets.only(left: 15.0),
+                height: 150.0,
+                child: Card(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 55.0,
+                        child: ClipOval(
+                          child: Image(
                             image: NetworkImage(widget.products.imageUrl == ""
                                 ? image
                                 : widget.products.imageUrl),
-                          )),
-                      height: 150.0,
-                      width: 140.0,
-                    ),
-                    Container(
+                            fit: BoxFit.fitWidth,
+                          ),
+                        ),
+                      ),
+                      Container(
                         child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        // SizedBox(
-                        //   height: 5.0,
-                        // ),
-                        Text(
-                          ' ${widget.products.productName}',
-                          style: TextStyle(
-                              fontSize: 25.0,
-                              // letterSpacing: 1.0,
-                              fontWeight: FontWeight.w900),
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // SizedBox(
+                            //   height: 5.0,
+                            // ),
+                            Text(
+                              ' ${widget.products.productName}',
+                              style: TextStyle(
+                                  fontSize: 25.0,
+                                  letterSpacing: 2.0,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: Text(
+                                ' Price : Rs.${widget.products.price}/-',
+                                style: TextStyle(
+                                    fontSize: 17.0,
+                                    letterSpacing: 1.0,
+                                    fontWeight: FontWeight.w800),
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        Text(
-                          ' Price : Rs.${widget.products.price}/-',
-                          style: TextStyle(
-                              fontSize: 15.0,
-                              letterSpacing: 1.0,
-                              fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ))
-                  ],
+                      ),
+                    ],
+                  ),
+                  shadowColor: Colors.grey.shade100,
+                  elevation: 20.0,
                 ),
-                shadowColor: Colors.grey,
-                elevation: 10.0,
               ),
             ),
           ),

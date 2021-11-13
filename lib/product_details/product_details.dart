@@ -123,14 +123,12 @@ class _Product_detailsState extends State<Product_details> {
         body: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding: const EdgeInsets.only(top: 50.0, left: 30.0),
               child: Container(
-                height: 330.0,
-                width: double.infinity,
+                height: 250.0,
+                width: 300.0,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(25.0),
-                      bottomRight: Radius.circular(25.0)),
+                  borderRadius: BorderRadius.circular(25.0),
                   color: Colors.red,
                   image: DecorationImage(
                     image: NetworkImage(widget.products.imageUrl == ""
@@ -168,14 +166,15 @@ class _Product_detailsState extends State<Product_details> {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                top: 360,
+                top: 340,
               ),
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.yellow,
+                    border: Border.all(color: Colors.yellowAccent, width: 5.0),
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25.0),
-                      topRight: Radius.circular(25.0),
+                      topLeft: Radius.circular(45.0),
+                      topRight: Radius.circular(45.0),
                     )),
                 child: SingleChildScrollView(
                   child: Container(
@@ -192,44 +191,30 @@ class _Product_detailsState extends State<Product_details> {
                               Text(
                                 '${widget.products.productName}',
                                 style: TextStyle(
-                                  fontFamily: 'NotoSerif-BoldItalic',
                                   fontSize: 40.0,
                                   fontWeight: FontWeight.w900,
-                                  fontStyle: FontStyle.italic,
-                                  letterSpacing: 1.5,
+                                  letterSpacing: 2.0,
                                 ),
                               ),
-                              SizedBox(width: 70.0),
-                              Column(
-                                children: [
-                                  // Text(
-                                  //   'Price',
-                                  //   style: TextStyle(
-                                  //     fontSize: 35.0,
-                                  //     fontWeight: FontWeight.w800,
-                                  //     letterSpacing: 1.5,
-                                  //   ),
-                                  // ),
-                                  SizedBox(
-                                    height: 10,
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Text(
+                                  'Rs.${widget.products.price}/-',
+                                  style: TextStyle(
+                                    fontSize: 25.0,
+                                    fontWeight: FontWeight.w800,
+                                    letterSpacing: 1.5,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                      'Rs.${widget.products.price}/-',
-                                      style: TextStyle(
-                                        fontSize: 25.0,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
                             ],
                           ),
                         ),
                         SizedBox(
-                          height: 20.0,
+                          height: 10.0,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -239,7 +224,7 @@ class _Product_detailsState extends State<Product_details> {
                             child: Card(
                               shape: RoundedRectangleBorder(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(25.0))),
+                                      BorderRadius.all(Radius.circular(45.0))),
                               child: Column(
                                 children: [
                                   SizedBox(
@@ -309,9 +294,10 @@ class _Product_detailsState extends State<Product_details> {
                                                     "Seller Details",
                                                     style: TextStyle(
                                                         fontSize: 24,
-                                                        color: Colors.blue,
+                                                        color: Colors.amber,
                                                         fontWeight:
-                                                            FontWeight.bold),
+                                                            FontWeight.w900,
+                                                        letterSpacing: 2.0),
                                                   ),
                                                 ),
                                                 SizedBox(height: 20),
@@ -322,22 +308,23 @@ class _Product_detailsState extends State<Product_details> {
                                                     'Seller Name:',
                                                     style: TextStyle(
                                                         color: Colors.blueGrey,
-                                                        fontSize: 15,
+                                                        fontSize: 18,
                                                         fontWeight:
-                                                            FontWeight.bold),
+                                                            FontWeight.w900,
+                                                        letterSpacing: 2.0),
                                                   ),
                                                 ),
                                                 Padding(
                                                     padding:
                                                         EdgeInsets.symmetric(
-                                                            vertical: 0,
+                                                            vertical: 10,
                                                             horizontal: 40),
                                                     child: Text(
                                                       sellerName,
                                                       style: TextStyle(
-                                                          fontSize: 20,
+                                                          fontSize: 23,
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                              FontWeight.w900,
                                                           fontStyle:
                                                               FontStyle.italic),
                                                     )),
@@ -345,24 +332,25 @@ class _Product_detailsState extends State<Product_details> {
                                                   padding: EdgeInsets.fromLTRB(
                                                       30.0, 20.0, 30.0, 0.0),
                                                   child: Text(
-                                                    'Seller Shop Name',
+                                                    'Seller Shop Name:',
                                                     style: TextStyle(
                                                         color: Colors.blueGrey,
-                                                        fontSize: 15,
+                                                        fontSize: 18,
                                                         fontWeight:
-                                                            FontWeight.bold),
+                                                            FontWeight.w900,
+                                                        letterSpacing: 2.0),
                                                   ),
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsets.symmetric(
-                                                      vertical: 5,
+                                                      vertical: 10,
                                                       horizontal: 40),
                                                   child: Text(
                                                     sellerShopName,
                                                     style: TextStyle(
-                                                        fontSize: 20,
+                                                        fontSize: 23,
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                            FontWeight.w900,
                                                         fontStyle:
                                                             FontStyle.italic),
                                                   ),
@@ -371,25 +359,26 @@ class _Product_detailsState extends State<Product_details> {
                                                   padding: EdgeInsets.fromLTRB(
                                                       30.5, 20.0, 30.0, 0.0),
                                                   child: Text(
-                                                    'Seller Address',
+                                                    'Seller Address:',
                                                     style: TextStyle(
                                                         color: Colors.blueGrey,
-                                                        fontSize: 15,
+                                                        fontSize: 18,
                                                         fontWeight:
-                                                            FontWeight.bold),
+                                                            FontWeight.w900,
+                                                        letterSpacing: 2.0),
                                                   ),
                                                 ),
                                                 Padding(
                                                     padding:
                                                         EdgeInsets.symmetric(
-                                                            vertical: 5,
+                                                            vertical: 10,
                                                             horizontal: 40),
                                                     child: Text(
                                                       sellerShopAddress,
                                                       style: TextStyle(
-                                                          fontSize: 20,
+                                                          fontSize: 23,
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                              FontWeight.w900,
                                                           fontStyle:
                                                               FontStyle.italic),
                                                     )),
@@ -397,25 +386,26 @@ class _Product_detailsState extends State<Product_details> {
                                                   padding: EdgeInsets.fromLTRB(
                                                       30.0, 20.0, 30.0, 0.0),
                                                   child: Text(
-                                                    'Seller Contact',
+                                                    'Seller Contact:',
                                                     style: TextStyle(
                                                         color: Colors.blueGrey,
-                                                        fontSize: 15,
+                                                        fontSize: 18,
                                                         fontWeight:
-                                                            FontWeight.bold),
+                                                            FontWeight.w900,
+                                                        letterSpacing: 2.0),
                                                   ),
                                                 ),
                                                 Padding(
                                                     padding:
                                                         EdgeInsets.symmetric(
-                                                            vertical: 5,
+                                                            vertical: 10,
                                                             horizontal: 40),
                                                     child: Text(
                                                       sellerMobile,
                                                       style: TextStyle(
-                                                          fontSize: 20,
+                                                          fontSize: 23,
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                              FontWeight.w900,
                                                           fontStyle:
                                                               FontStyle.italic),
                                                     )),
@@ -423,20 +413,28 @@ class _Product_detailsState extends State<Product_details> {
                                                     padding:
                                                         EdgeInsets.fromLTRB(
                                                             30.0,
-                                                            25.0,
+                                                            15.0,
                                                             30.0,
                                                             20.0),
                                                     child: ElevatedButton(
                                                       child: Text(
-                                                          'Proceed to Pay'),
+                                                        'Proceed to Pay',
+                                                        style: TextStyle(
+                                                          letterSpacing: 1.5,
+                                                          color: Colors.white,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w900,
+                                                        ),
+                                                      ),
                                                       onPressed: () {
                                                         getPayment(widget
                                                             .products.price);
                                                       },
                                                       style: ElevatedButton
                                                           .styleFrom(
-                                                        primary:
-                                                            Colors.green[600],
+                                                        elevation: 20.0,
+                                                        primary: Colors.amber,
                                                       ),
                                                     )),
                                               ],

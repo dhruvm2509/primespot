@@ -18,11 +18,11 @@ class _MedicinesState extends State<Medicines> {
   _MedicinesState(this.uid);
   @override
   final List<String> imagesList = [
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHLdacNWjSI3Bo11I1uQe5MdWni_3bzTdGlQ&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-yhJKOrKcpuqLe47VPc0uyvtidQ7xhWZkPg&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ16OPL1VLQtXi3BmqyrQvjhwZNHbPnxpETiQ&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT9gn5ksLR8qAeiigvnKHyxbHFzHi00zex0A&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL6LZ0Gb_bMzZlq5NMOm0AF0wD-gdsgC3bpg&usqp=CAU',
+    'https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/114544534/original/6f215c8b616a1d476fca4f22117e422d448b2557/make-attractive-ads-for-your-medicine.jpg',
+    'https://5.imimg.com/data5/SELLER/Default/2021/5/UP/VR/QP/16096027/paracetamol-tablet-500x500.jpg',
+    'https://www.advertgallery.com/wp-content/uploads/2018/04/bring-your-dry-eyes-back-to-life-eye-spa-eye-drops-ad-bombay-times-07-04-2018.png',
+    'https://lh3.googleusercontent.com/proxy/e7yInFo_Vcf-TXqo8EhL3yORUIEOt2Q6g7uVyNsSihXQjmL6xZlweDqLGuOEO6GuZjiT6fdCPOajD_77cyZPVA8KxjVMK2pNVhlmCU9bukp2Wvi98PTugL8',
+    'https://www.sellbuystuffs.com/images/2da688c4-60eb-4a9d-aaf7-eacd12d95d3d.jpg',
   ];
 
   List<ProductItem> allProducts = [];
@@ -52,13 +52,14 @@ class _MedicinesState extends State<Medicines> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
-        title: Center(
+        title: Padding(
+          padding: const EdgeInsets.only(left: 70.0),
           child: Text(
             'Medicines',
             style: TextStyle(
-                letterSpacing: 1.6,
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0),
+                letterSpacing: 2.5,
+                fontWeight: FontWeight.w900,
+                fontSize: 25.0),
           ),
         ),
       ),
@@ -127,15 +128,38 @@ class _MedicinesState extends State<Medicines> {
               );
             }).toList(),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 200.0),
-            child: Text(
-              'Best Sellers',
-              style: TextStyle(
-                  fontSize: 23.0,
-                  letterSpacing: 2.0,
-                  fontWeight: FontWeight.w900),
-            ),
+          Row(
+            children: [
+              SizedBox(
+                width: 10.0,
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: 20.0,
+                child: ClipOval(
+                  child: Image(
+                    image: NetworkImage(
+                        'https://img.freepik.com/free-vector/start_53876-25533.jpg?size=338&ext=jpg'),
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 5.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  right: 140.0,
+                ),
+                child: Text(
+                  'Best Sellers',
+                  style: TextStyle(
+                      fontSize: 25.0,
+                      letterSpacing: 2.0,
+                      fontWeight: FontWeight.w900),
+                ),
+              ),
+            ],
           ),
           SizedBox(height: 15.0),
           Padding(
@@ -145,7 +169,7 @@ class _MedicinesState extends State<Medicines> {
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 380,
+                        height: 342,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
                             itemCount: allProducts.length,

@@ -94,10 +94,27 @@ class _SellerDashboardState extends State<SellerDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.amber,
           title: Center(
               child: sellerName == ""
-                  ? Text('Seller\'s Dashboard')
-                  : Text('$sellerName\'s Dashboard')),
+                  ? Text(
+                      'Seller\'s Dashboard',
+                      style: TextStyle(
+                        fontSize: 23.0,
+                        color: Colors.white,
+                        letterSpacing: 1.5,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    )
+                  : Text(
+                      '$sellerName',
+                      style: TextStyle(
+                        fontSize: 23.0,
+                        color: Colors.white,
+                        letterSpacing: 1.5,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    )),
           actions: [
             IconButton(
                 onPressed: () {
@@ -111,150 +128,171 @@ class _SellerDashboardState extends State<SellerDashboard> {
           ],
         ),
         body: SingleChildScrollView(
-          child: Column(children: [
-            Padding(
-                padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 0.0),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.blue),
-                    child: Text("Add Product"),
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Dialog(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(40)),
-                            elevation: 16,
-                            child: Container(
-                              height: 550.0,
-                              width: 400.0,
-                              child: ListView(
-                                children: <Widget>[
-                                  SizedBox(height: 20),
-                                  Center(
-                                    child: Text(
-                                      "Register Your Product",
-                                      style: TextStyle(
-                                          fontSize: 24,
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                  SizedBox(height: 20),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        30.0, 10.0, 30.0, 0.0),
-                                    child: Text(
-                                      'Product Name',
-                                      style: TextStyle(
-                                        fontSize: 12,
+          child: Container(
+            height: 800.0,
+            child: Column(children: [
+              Padding(
+                  padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 0.0),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.amber, elevation: 18.0),
+                      child: Text(
+                        "Add Product",
+                        style: TextStyle(
+                          letterSpacing: 1.5,
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(40)),
+                              elevation: 16,
+                              child: Container(
+                                height: 730.0,
+                                width: 400.0,
+                                child: ListView(
+                                  children: <Widget>[
+                                    SizedBox(height: 40),
+                                    Center(
+                                      child: Text(
+                                        "Register Your Product",
+                                        style: TextStyle(
+                                            fontSize: 24,
+                                            color: Colors.amber,
+                                            fontWeight: FontWeight.w900,
+                                            letterSpacing: 2.0),
                                       ),
                                     ),
-                                  ),
-                                  Padding(
+                                    SizedBox(height: 20),
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          30.0, 10.0, 30.0, 0.0),
+                                      child: Text(
+                                        'Product Name',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w900,
+                                            letterSpacing: 2.0),
+                                      ),
+                                    ),
+                                    Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 0, horizontal: 30),
+                                        child: (TextFormField(
+                                          onChanged: (text) {
+                                            productName = text;
+                                          },
+                                          validator: (value) {
+                                            if (value == null) {
+                                              return 'Please enter a ProductName';
+                                            }
+                                            return null;
+                                          },
+                                        ))),
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          30.0, 10.0, 30.0, 0.0),
+                                      child: Text(
+                                        'Product Description',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w900,
+                                            letterSpacing: 2.0),
+                                      ),
+                                    ),
+                                    Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 0, horizontal: 30),
+                                        child: (TextFormField(
+                                          onChanged: (text) {
+                                            productDescription = (text);
+                                          },
+                                          validator: (value) {
+                                            if (value == null) {
+                                              return 'Please enter some description of product';
+                                            }
+                                            return null;
+                                          },
+                                        ))),
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          30.0, 10.0, 30.0, 0.0),
+                                      child: Text(
+                                        'Price',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w900,
+                                            letterSpacing: 2.0),
+                                      ),
+                                    ),
+                                    Padding(
                                       padding: EdgeInsets.symmetric(
                                           vertical: 0, horizontal: 30),
                                       child: (TextFormField(
-                                        onChanged: (text) {
-                                          productName = text;
-                                        },
-                                        validator: (value) {
-                                          if (value == null) {
-                                            return 'Please enter a ProductName';
-                                          }
-                                          return null;
-                                        },
-                                      ))),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        30.0, 10.0, 30.0, 0.0),
-                                    child: Text(
-                                      'Product Description',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 0, horizontal: 30),
-                                      child: (TextFormField(
-                                        onChanged: (text) {
-                                          productDescription = (text);
-                                        },
-                                        validator: (value) {
-                                          if (value == null) {
-                                            return 'Please enter some description of product';
-                                          }
-                                          return null;
-                                        },
-                                      ))),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        30.0, 10.0, 30.0, 0.0),
-                                    child: Text(
-                                      'Price',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 0, horizontal: 30),
-                                    child: (TextFormField(
-                                      keyboardType: TextInputType.number,
-                                      onChanged: (text) {
-                                        price = int.parse(text);
-                                      },
-                                      validator: (value) {
-                                        if (value == null) {
-                                          return 'Please enter a valid Price';
-                                        }
-                                        return null;
-                                      },
-                                    )),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        30.0, 10.0, 30.0, 0.0),
-                                    child: Text(
-                                      'Contact Number',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 0, horizontal: 30),
-                                      child: (TextFormField(
-                                        onChanged: (text) {
-                                          mobileNumber = int.parse(text);
-                                        },
                                         keyboardType: TextInputType.number,
+                                        onChanged: (text) {
+                                          price = int.parse(text);
+                                        },
                                         validator: (value) {
                                           if (value == null) {
-                                            return 'Please enter a valid mobile number';
+                                            return 'Please enter a valid Price';
                                           }
                                           return null;
                                         },
-                                      ))),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        30.0, 10.0, 30.0, 0.0),
-                                    child: Text(
-                                      'Category',
-                                      style: TextStyle(
-                                        fontSize: 12,
+                                      )),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          30.0, 10.0, 30.0, 0.0),
+                                      child: Text(
+                                        'Contact Number',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w900,
+                                            letterSpacing: 2.0),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Card(
-                                    child: Padding(
+                                    Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 0, horizontal: 30),
+                                        child: (TextFormField(
+                                          onChanged: (text) {
+                                            mobileNumber = int.parse(text);
+                                          },
+                                          keyboardType: TextInputType.number,
+                                          validator: (value) {
+                                            if (value == null) {
+                                              return 'Please enter a valid mobile number';
+                                            }
+                                            return null;
+                                          },
+                                        ))),
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          30.0, 10.0, 30.0, 0.0),
+                                      child: Text(
+                                        'Category',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w900,
+                                            letterSpacing: 2.0),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 5, horizontal: 30),
                                       child: DropdownButtonFormField<String>(
@@ -276,69 +314,84 @@ class _SellerDashboardState extends State<SellerDashboard> {
                                         }).toList(),
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        30.0, 10.0, 30.0, 0.0),
-                                    child: Text(
-                                      'Enter Product Image URL',
-                                      style: TextStyle(
-                                        fontSize: 12,
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          30.0, 10.0, 30.0, 0.0),
+                                      child: Text(
+                                        'Enter Product Image URL',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w900,
+                                            letterSpacing: 2.0),
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 0, horizontal: 30),
-                                      child: (TextFormField(
-                                        onChanged: (text) {
-                                          imageUrl = text;
-                                        },
-                                        validator: (value) {
-                                          if (value == null) {
-                                            return 'Please enter a valid mobile number';
-                                          }
-                                          return null;
-                                        },
-                                      ))),
-                                  Padding(
-                                      padding: EdgeInsets.fromLTRB(
-                                          30.0, 25.0, 30.0, 10.0),
-                                      child: ElevatedButton(
-                                        child: Text('Submit'),
-                                        onPressed: addProduct,
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Colors.green[600],
-                                        ),
-                                      )),
-                                ],
+                                    Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 0, horizontal: 30),
+                                        child: (TextFormField(
+                                          onChanged: (text) {
+                                            imageUrl = text;
+                                          },
+                                          validator: (value) {
+                                            if (value == null) {
+                                              return 'Please enter a valid mobile number';
+                                            }
+                                            return null;
+                                          },
+                                        ))),
+                                    Padding(
+                                        padding: EdgeInsets.fromLTRB(
+                                            30.0, 25.0, 30.0, 10.0),
+                                        child: ElevatedButton(
+                                          child: Text(
+                                            'Submit',
+                                            style: TextStyle(
+                                              letterSpacing: 1.5,
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w900,
+                                            ),
+                                          ),
+                                          onPressed: addProduct,
+                                          style: ElevatedButton.styleFrom(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(25.0),
+                                            ),
+                                            elevation: 20.0,
+                                            primary: Colors.amber,
+                                          ),
+                                        )),
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                        },
-                      );
-                    })),
-            RefreshIndicator(
-                child: Container(
-                  height: 600,
-                  child: ListView.builder(
-                      padding: const EdgeInsets.all(8),
-                      itemCount: allProducts.length,
-                      itemBuilder: (context, index) {
-                        return ProductCard(
-                          products: allProducts[index],
+                            );
+                          },
                         );
-                      }),
-                ),
-                onRefresh: () {
-                  return Future.delayed(
-                    Duration(seconds: 1),
-                    () {
-                      initState();
-                    },
-                  );
-                })
-          ]),
+                      })),
+              RefreshIndicator(
+                  child: Container(
+                    height: 560,
+                    child: ListView.builder(
+                        padding: const EdgeInsets.all(8),
+                        itemCount: allProducts.length,
+                        itemBuilder: (context, index) {
+                          return ProductCard(
+                            products: allProducts[index],
+                          );
+                        }),
+                  ),
+                  onRefresh: () {
+                    return Future.delayed(
+                      Duration(seconds: 1),
+                      () {
+                        initState();
+                      },
+                    );
+                  })
+            ]),
+          ),
         ));
   }
 }
