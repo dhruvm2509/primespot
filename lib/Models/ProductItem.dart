@@ -5,15 +5,16 @@ class ProductItem {
   String category = "";
   int mobileNumber = 0;
   String sellerId = "";
+  String imageUrl = "";
 
-  ProductItem({
-    required this.productName,
-    required this.productDescription,
-    required this.price,
-    required this.category,
-    required this.mobileNumber,
-    required this.sellerId,
-  });
+  ProductItem(
+      {required this.productName,
+      required this.productDescription,
+      required this.price,
+      required this.category,
+      required this.mobileNumber,
+      required this.sellerId,
+      required this.imageUrl});
 
   // Named constructor
   ProductItem.fromMap(Map<String, dynamic> mapData) {
@@ -23,5 +24,6 @@ class ProductItem {
     this.mobileNumber = mapData['mobileNumber'];
     this.price = mapData['Price'];
     this.sellerId = mapData['sellerId'];
+    this.imageUrl = mapData['imageUrl'];
   }
 }

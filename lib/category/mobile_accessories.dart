@@ -7,13 +7,16 @@ import 'package:primespot/Dashboard/BuyerDashboard.dart';
 import 'package:primespot/Models/ProductItem.dart';
 
 class Mobile extends StatefulWidget {
-  const Mobile({Key? key}) : super(key: key);
+  final List<String> uid;
+  const Mobile({Key? key, required this.uid}) : super(key: key);
 
   @override
-  _MobileState createState() => _MobileState();
+  _MobileState createState() => _MobileState(uid);
 }
 
 class _MobileState extends State<Mobile> {
+  List<String> uid;
+  _MobileState(this.uid);
   @override
   final List<String> imagesList = [
     'https://cdn.shopify.com/s/files/1/1916/9825/files/ele.mobile_accessries_2048x2048.jpg?v=1621587344',
@@ -26,83 +29,34 @@ class _MobileState extends State<Mobile> {
   List<ProductItem> allProducts = [];
   int _currentIndex = 0;
 
-  Future fetchMobileservices() async {
-    List<String> uid = [];
+  // Future fetchMobileservices() async {
 
-    String? buyerPinCode;
-
-    FirebaseFirestore.instance
-        .collection('Buyer')
-        .doc(FirebaseAuth.instance.currentUser!.phoneNumber)
-        .get()
-        .then((value) {
-      buyerPinCode = value['PinCode'];
-    });
-
-    final snapshot = await FirebaseFirestore.instance
-        .collection('Seller')
-        .where('PinCode', isEqualTo: buyerPinCode)
-        .get();
-    snapshot.docs.forEach((doc) {
-      uid.add(doc.data()['mobileNumber']);
-      //print(doc.data()['mobileNumber']);
-    });
-
-    for (int i = 0; i < uid.length; i++) {
-      print(uid[i]);
-
-      final snapshot = await FirebaseFirestore.instance
-          .collection('Seller/${uid[i]}/Products')
-          .where('Category', isEqualTo: "Mobile Accessories")
-          .get();
-
-      snapshot.docs.forEach((doc) {
-        // print(doc.data());
-
-        setState(() {
-          allProducts.add(ProductItem.fromMap(doc.data()));
-        });
-        // list.add(ProductItem.fromMap(doc.data()));
-      });
-      // print(list.length);
-    }
-
-    print(allProducts);
-  }
+  // }
 
   void initState() {
     super.initState();
 
-    fetchMobileservices();
+    for (int i = 0; i < uid.length; i++) {
+      print(uid[i]);
+
+      FirebaseFirestore.instance
+          .collection('Seller/${uid[i]}/Products')
+          .where('Category', isEqualTo: "Mobile Accessories")
+          .get()
+          .then((value) => value.docs.forEach((element) {
+                setState(() {
+                  allProducts.add(ProductItem.fromMap(element.data()));
+                });
+              }));
+    }
+
+    print(allProducts);
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 300),
-            child: Container(
-              width: 60.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(25.0),
-                    bottomRight: Radius.circular(25.0)),
-                color: Colors.amber,
-              ),
-              child: IconButton(
-                onPressed: () => Navigator.pop(context,
-                    MaterialPageRoute(builder: (context) => BuyerDashboard())),
-                icon: Icon(
-                  Icons.chevron_left,
-                  color: Colors.black,
-                  size: 35.0,
-                ),
-              ),
-            ),
-          ),
-        ],
         title: Center(
           child: Text(
             'Mobile Accessories',
@@ -196,7 +150,7 @@ class _MobileState extends State<Mobile> {
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 350,
+                        height: 380,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
                             itemCount: allProducts.length,

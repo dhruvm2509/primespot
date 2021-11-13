@@ -6,13 +6,16 @@ import 'package:primespot/Cards/ProductItem.dart';
 import 'package:primespot/Models/ProductItem.dart';
 
 class Stationary extends StatefulWidget {
-  const Stationary({Key? key}) : super(key: key);
+  final List<String> uid;
+  const Stationary({Key? key, required this.uid}) : super(key: key);
 
   @override
-  _StationaryState createState() => _StationaryState();
+  _StationaryState createState() => _StationaryState(uid);
 }
 
 class _StationaryState extends State<Stationary> {
+  List<String> uid;
+  _StationaryState(this.uid);
   @override
   final List<String> imagesList = [
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS23zgFtgDmDM6eXtgoKGOtAifHJYs7ROrvaw&usqp=CAU',
@@ -25,54 +28,24 @@ class _StationaryState extends State<Stationary> {
   List<ProductItem> allProducts = [];
   int _currentIndex = 0;
 
-  Future fetchStationaryservices() async {
-    List<String> uid = [];
-
-    String? buyerPinCode;
-
-    FirebaseFirestore.instance
-        .collection('Buyer')
-        .doc(FirebaseAuth.instance.currentUser!.phoneNumber)
-        .get()
-        .then((value) {
-      buyerPinCode = value['PinCode'];
-    });
-
-    final snapshot = await FirebaseFirestore.instance
-        .collection('Seller')
-        .where('PinCode', isEqualTo: buyerPinCode)
-        .get();
-    snapshot.docs.forEach((doc) {
-      uid.add(doc.data()['mobileNumber']);
-      //print(doc.data()['mobileNumber']);
-    });
+  void initState() {
+    super.initState();
 
     for (int i = 0; i < uid.length; i++) {
       print(uid[i]);
 
-      final snapshot = await FirebaseFirestore.instance
+      FirebaseFirestore.instance
           .collection('Seller/${uid[i]}/Products')
           .where('Category', isEqualTo: "Stationaries")
-          .get();
-
-      snapshot.docs.forEach((doc) {
-        // print(doc.data());
-
-        setState(() {
-          allProducts.add(ProductItem.fromMap(doc.data()));
-        });
-        // list.add(ProductItem.fromMap(doc.data()));
-      });
-      // print(list.length);
+          .get()
+          .then((value) => value.docs.forEach((element) {
+                setState(() {
+                  allProducts.add(ProductItem.fromMap(element.data()));
+                });
+              }));
     }
 
     print(allProducts);
-  }
-
-  void initState() {
-    super.initState();
-
-    fetchStationaryservices();
   }
 
   Widget build(BuildContext context) {
@@ -166,7 +139,7 @@ class _StationaryState extends State<Stationary> {
           ),
           SizedBox(height: 15.0),
           Padding(
-            padding: const EdgeInsets.only(right: 180.0),
+            padding: const EdgeInsets.only(right: 10.0),
             child: SingleChildScrollView(
               child: Column(
                 children: [
