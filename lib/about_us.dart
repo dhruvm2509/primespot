@@ -52,7 +52,7 @@ class About_us extends StatelessWidget {
             ),
           ),
           Container(
-            height: 540,
+            height: 630,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -94,7 +94,7 @@ class About_us extends StatelessWidget {
                     padding:
                         const EdgeInsets.only(left: 20.0, top: 10, right: 20.0),
                     child: Container(
-                      height: 150.0,
+                      height: 220.0,
                       width: 300.0,
                       child: Text(
                         'Prime Spot is a one-stop solution for all our daily shopping needs. With this app, one can  buy their daily essentials (like grocery items, Mobile Accessories, Medicine, stationary and Many more) within their city. ',
@@ -190,7 +190,7 @@ class About_us extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 35.0),
                             child: Container(
-                              width: 220.0,
+                              width: 250,
                               child: Column(
                                 children: [
                                   Row(
@@ -207,7 +207,7 @@ class About_us extends StatelessWidget {
                                         style: TextStyle(
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.w900,
-                                            letterSpacing: 1.5,
+                                            letterSpacing: 1,
                                             color: Colors.amber),
                                       )
                                     ],
@@ -225,11 +225,11 @@ class About_us extends StatelessWidget {
                                         width: 5.0,
                                       ),
                                       Text(
-                                        'Hrithikvarshney98@gmail.com',
+                                        'hrithikvarshney98@gmail.com',
                                         style: TextStyle(
-                                            fontSize: 14.0,
+                                            fontSize: 14,
                                             fontWeight: FontWeight.w900,
-                                            letterSpacing: 1.5,
+                                            letterSpacing: 1.1,
                                             color: Colors.amber),
                                       )
                                     ],
