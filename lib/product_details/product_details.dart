@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:primespot/Cards/AddProduct.dart';
+import 'package:primespot/about_us.dart';
 import 'package:primespot/Location/google_maps.dart';
 import 'package:primespot/Models/ProductItem.dart';
 import 'package:primespot/category/mobile_accessories.dart';
@@ -178,12 +179,6 @@ class _Product_detailsState extends State<Product_details> {
                     )),
                 child: SingleChildScrollView(
                   child: Container(
-                    // decoration: BoxDecoration(
-                    //     color: Colors.yellow,
-                    //     borderRadius: BorderRadius.only(
-                    //       topLeft: Radius.circular(25.0),
-                    //       topRight: Radius.circular(25.0),
-                    //     )),
                     child: Column(
                       children: [
                         SizedBox(
