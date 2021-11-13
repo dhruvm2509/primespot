@@ -6,13 +6,16 @@ import 'package:primespot/Cards/ProductItem.dart';
 import 'package:primespot/Models/ProductItem.dart';
 
 class Grocery extends StatefulWidget {
-  const Grocery({Key? key}) : super(key: key);
+  final List<String> uid;
+  const Grocery({Key? key, required this.uid}) : super(key: key);
 
   @override
-  _GroceryState createState() => _GroceryState();
+  _GroceryState createState() => _GroceryState(uid);
 }
 
 class _GroceryState extends State<Grocery> {
+  List<String> uid;
+  _GroceryState(this.uid);
   @override
   final List<String> imagesList = [
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT970pg7X_HnpBhmov_hQXGljzTNiFZp4hDPg&usqp=CAU',
@@ -26,54 +29,24 @@ class _GroceryState extends State<Grocery> {
   List<ProductItem> allProducts = [];
   int _currentIndex = 0;
 
-  Future fetchGroceryservices() async {
-    List<String> uid = [];
-
-    String? buyerPinCode;
-
-    FirebaseFirestore.instance
-        .collection('Buyer')
-        .doc(FirebaseAuth.instance.currentUser!.phoneNumber)
-        .get()
-        .then((value) {
-      buyerPinCode = value['PinCode'];
-    });
-
-    final snapshot = await FirebaseFirestore.instance
-        .collection('Seller')
-        .where('PinCode', isEqualTo: buyerPinCode)
-        .get();
-    snapshot.docs.forEach((doc) {
-      uid.add(doc.data()['mobileNumber']);
-      //print(doc.data()['mobileNumber']);
-    });
+  void initState() {
+    super.initState();
 
     for (int i = 0; i < uid.length; i++) {
       print(uid[i]);
 
-      final snapshot = await FirebaseFirestore.instance
+      FirebaseFirestore.instance
           .collection('Seller/${uid[i]}/Products')
           .where('Category', isEqualTo: "Groceries")
-          .get();
-
-      snapshot.docs.forEach((doc) {
-        // print(doc.data());
-
-        setState(() {
-          allProducts.add(ProductItem.fromMap(doc.data()));
-        });
-        // list.add(ProductItem.fromMap(doc.data()));
-      });
-      // print(list.length);
+          .get()
+          .then((value) => value.docs.forEach((element) {
+                setState(() {
+                  allProducts.add(ProductItem.fromMap(element.data()));
+                });
+              }));
     }
 
     print(allProducts);
-  }
-
-  void initState() {
-    super.initState();
-
-    fetchGroceryservices();
   }
 
   Widget build(BuildContext context) {

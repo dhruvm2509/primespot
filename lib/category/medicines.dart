@@ -6,13 +6,16 @@ import 'package:primespot/Cards/ProductItem.dart';
 import 'package:primespot/Models/ProductItem.dart';
 
 class Medicines extends StatefulWidget {
-  const Medicines({Key? key}) : super(key: key);
+  final List<String> uid;
+  const Medicines({Key? key, required this.uid}) : super(key: key);
 
   @override
-  _MedicinesState createState() => _MedicinesState();
+  _MedicinesState createState() => _MedicinesState(uid);
 }
 
 class _MedicinesState extends State<Medicines> {
+  List<String> uid;
+  _MedicinesState(this.uid);
   @override
   final List<String> imagesList = [
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHLdacNWjSI3Bo11I1uQe5MdWni_3bzTdGlQ&usqp=CAU',
@@ -25,54 +28,24 @@ class _MedicinesState extends State<Medicines> {
   List<ProductItem> allProducts = [];
   int _currentIndex = 0;
 
-  Future fetchMedicineServices() async {
-    List<String> uid = [];
-
-    String? buyerPinCode;
-
-    FirebaseFirestore.instance
-        .collection('Buyer')
-        .doc(FirebaseAuth.instance.currentUser!.phoneNumber)
-        .get()
-        .then((value) {
-      buyerPinCode = value['PinCode'];
-    });
-
-    final snapshot = await FirebaseFirestore.instance
-        .collection('Seller')
-        .where('PinCode', isEqualTo: buyerPinCode)
-        .get();
-    snapshot.docs.forEach((doc) {
-      uid.add(doc.data()['mobileNumber']);
-      //print(doc.data()['mobileNumber']);
-    });
+  void initState() {
+    super.initState();
 
     for (int i = 0; i < uid.length; i++) {
       print(uid[i]);
 
-      final snapshot = await FirebaseFirestore.instance
+      FirebaseFirestore.instance
           .collection('Seller/${uid[i]}/Products')
           .where('Category', isEqualTo: "Medicines")
-          .get();
-
-      snapshot.docs.forEach((doc) {
-        // print(doc.data());
-
-        setState(() {
-          allProducts.add(ProductItem.fromMap(doc.data()));
-        });
-        // list.add(ProductItem.fromMap(doc.data()));
-      });
-      // print(list.length);
+          .get()
+          .then((value) => value.docs.forEach((element) {
+                setState(() {
+                  allProducts.add(ProductItem.fromMap(element.data()));
+                });
+              }));
     }
 
     print(allProducts);
-  }
-
-  void initState() {
-    super.initState();
-
-    fetchMedicineServices();
   }
 
   Widget build(BuildContext context) {

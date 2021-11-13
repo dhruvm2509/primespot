@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:primespot/Screens/firstpage.dart';
@@ -14,6 +15,38 @@ class BuyerDashboard extends StatefulWidget {
 }
 
 class _BuyerDashboardState extends State<BuyerDashboard> {
+  List<String> uid = [];
+
+  void initState() {
+    super.initState();
+    fetchSellerId();
+  }
+
+  Future fetchSellerId() async {
+    String? buyerPinCode;
+
+    await FirebaseFirestore.instance
+        .collection('Buyer')
+        .doc(FirebaseAuth.instance.currentUser!.phoneNumber)
+        .get()
+        .then((value) {
+      buyerPinCode = value['PinCode'];
+      print('buyer Pincode = $buyerPinCode');
+    });
+
+    final snapshot =
+        await FirebaseFirestore.instance.collection('Seller').get();
+    snapshot.docs.forEach((doc) {
+      if (doc.data()['PinCode'] == buyerPinCode) {
+        uid.add(doc.data()['mobileNumber']);
+
+        print('${doc.data()} Seller with same pin code');
+      }
+
+      //print(doc.data()['mobileNumber']);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,8 +94,10 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
               Card(
                 child: new InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Mobile()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Mobile(uid: uid)));
                   },
                   child: Container(
                     width: 170.0,
@@ -80,8 +115,10 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
               Card(
                 child: new InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Grocery()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Grocery(uid: uid)));
                   },
                   child: Container(
                     width: 170.0,
@@ -126,8 +163,10 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
               Card(
                 child: new InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Stationary()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Stationary(uid: uid)));
                   },
                   child: Container(
                     width: 170.0,
@@ -145,8 +184,10 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
               Card(
                 child: new InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Medicines()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Medicines(uid: uid)));
                   },
                   child: Container(
                     width: 170.0,
