@@ -70,18 +70,22 @@ class LoginScreenState extends State<LoginScreen> {
                       )),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 30),
+                  width: double.infinity,
+                  margin: const EdgeInsets.only(left: 10.0, top: 30.0),
                   child: Center(
                     child: Text(
-                      'Enter your Valid Mobile No',
+                      'Enter your Valid Mobile No.',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 1.5,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 2.5,
                       ),
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 20.0,
                 ),
                 SizedBox(
                   height: 80,
@@ -124,7 +128,7 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(
                   height: 40,
-                  width: 120,
+                  width: 140,
                   child: RoundedLoadingButton(
                     color: Colors.amber,
                     controller: _btnController1,
@@ -134,9 +138,10 @@ class LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Send OTP',
                       style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1.5),
+                          fontSize: 20.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 2.5),
                     ),
                   ),
                 ),

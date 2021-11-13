@@ -373,27 +373,24 @@ class _MapViewState extends State<MapView> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Text(
-                            'Places',
-                            style: TextStyle(fontSize: 20.0),
-                          ),
                           SizedBox(height: 10),
                           Column(
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 0.0),
+                                    EdgeInsets.fromLTRB(0.0, 10.0, 120.0, 0.0),
                                 child: Text(
                                   'Seller Address:',
                                   style: TextStyle(
-                                      color: Colors.blueGrey,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
+                                    letterSpacing: 1.5,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w900,
+                                  ),
                                 ),
                               ),
                               Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 0, horizontal: 40),
+                                  padding: EdgeInsets.only(
+                                      left: 40.0, right: 30.0, top: 5.0),
                                   child: Text(
                                     seller_address,
                                     style: TextStyle(
@@ -403,18 +400,19 @@ class _MapViewState extends State<MapView> {
                                   )),
                               Padding(
                                 padding:
-                                    EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 0.0),
+                                    EdgeInsets.fromLTRB(0.0, 10.0, 120.0, 0.0),
                                 child: Text(
                                   'Buyer Address:',
                                   style: TextStyle(
-                                      color: Colors.blueGrey,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
+                                    letterSpacing: 1.5,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w900,
+                                  ),
                                 ),
                               ),
                               Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 0, horizontal: 40),
+                                  padding: EdgeInsets.only(
+                                      left: 0.0, right: 35.0, top: 5.0),
                                   child: Text(
                                     buyer_address,
                                     style: TextStyle(
@@ -480,13 +478,16 @@ class _MapViewState extends State<MapView> {
                               child: Text(
                                 'Show Route'.toUpperCase(),
                                 style: TextStyle(
+                                  letterSpacing: 1.5,
                                   color: Colors.white,
                                   fontSize: 20.0,
+                                  fontWeight: FontWeight.w900,
                                 ),
                               ),
                             ),
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.red,
+                              primary: Colors.amber,
+                              elevation: 20.0,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0),
                               ),

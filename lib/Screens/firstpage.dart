@@ -31,6 +31,9 @@ class _FirstPageState extends State<FirstPage> {
             child: Column(
               children: [
                 SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
                   width: 200.0,
                   height: 40.0,
                   child: ElevatedButton(
@@ -39,7 +42,8 @@ class _FirstPageState extends State<FirstPage> {
                       style: TextStyle(
                         fontSize: 20.0,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.5,
+                        fontWeight: FontWeight.w900,
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
@@ -69,7 +73,8 @@ class _FirstPageState extends State<FirstPage> {
                       style: TextStyle(
                         fontSize: 20.0,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.5,
+                        fontWeight: FontWeight.w900,
                       ),
                     ),
                     style: ElevatedButton.styleFrom(

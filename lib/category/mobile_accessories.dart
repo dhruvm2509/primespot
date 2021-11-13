@@ -19,11 +19,11 @@ class _MobileState extends State<Mobile> {
   _MobileState(this.uid);
   @override
   final List<String> imagesList = [
-    'https://cdn.shopify.com/s/files/1/1916/9825/files/ele.mobile_accessries_2048x2048.jpg?v=1621587344',
-    'https://uidesign.gbtcdn.com/GB/image/2019/20190802_11705/banner.jpg?imbypass=true',
+    'https://t4.ftcdn.net/jpg/02/69/84/19/360_F_269841954_IidwZ0kwyu0UruUWUZ3fRUHt9bmxQqrZ.jpg',
+    'https://i0.wp.com/techobserver.in/wp-content/uploads/2021/06/Mobile-Accessories.jpg?resize=696%2C418&ssl=1',
     'https://media-eng.dhakatribune.com/uploads/2018/07/samsung-accessories-edited-1532008683956.jpg',
     'https://images.dailyobjects.com/marche/assets/images/homepage/desktop/cases-banner-desktop-update.jpg?tr=cm-pad_crop,w-412,dpr-2',
-    'https://static.india.com/wp-content/uploads/2021/04/oppo-smartphone.jpg',
+    'https://t3.ftcdn.net/jpg/02/73/31/68/360_F_273316816_N9164vXl3NTl1W50Z3o2ocQmtjBAAPOO.jpg',
   ];
 
   List<ProductItem> allProducts = [];
@@ -57,13 +57,14 @@ class _MobileState extends State<Mobile> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
-        title: Center(
+        title: Padding(
+          padding: const EdgeInsets.only(left: 20.0),
           child: Text(
             'Mobile Accessories',
             style: TextStyle(
-                letterSpacing: 1.6,
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0),
+                letterSpacing: 2.5,
+                fontWeight: FontWeight.w900,
+                fontSize: 25.0),
           ),
         ),
       ),
@@ -132,17 +133,39 @@ class _MobileState extends State<Mobile> {
               );
             }).toList(),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 200.0),
-            child: Text(
-              'Best Sellers',
-              style: TextStyle(
-                  fontSize: 23.0,
-                  letterSpacing: 2.0,
-                  fontWeight: FontWeight.w900),
-            ),
+          Row(
+            children: [
+              SizedBox(
+                width: 10.0,
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: 20.0,
+                child: ClipOval(
+                  child: Image(
+                    image: NetworkImage(
+                        'https://img.freepik.com/free-vector/start_53876-25533.jpg?size=338&ext=jpg'),
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 5.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  right: 140.0,
+                ),
+                child: Text(
+                  'Best Sellers',
+                  style: TextStyle(
+                      fontSize: 25.0,
+                      letterSpacing: 2.0,
+                      fontWeight: FontWeight.w900),
+                ),
+              ),
+            ],
           ),
-          SizedBox(height: 15.0),
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: SingleChildScrollView(
@@ -150,7 +173,8 @@ class _MobileState extends State<Mobile> {
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 380,
+                        height: 350,
+                        width: double.infinity,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
                             itemCount: allProducts.length,

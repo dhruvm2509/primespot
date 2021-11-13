@@ -74,6 +74,7 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
+
         title: Center(
             child: buyerName == null
                 ? Text('Buyer\'s Dashboard')
@@ -99,16 +100,22 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
           Text(
             'Select Your Category',
             style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.0),
+                fontSize: 25.0,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 2.0),
           ),
           SizedBox(
             height: 40.0,
           ),
           Row(
             children: [
+              SizedBox(
+                width: 6.0,
+              ),
               Card(
+                elevation: 18.0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
                 child: new InkWell(
                   onTap: () {
                     Navigator.push(
@@ -117,19 +124,27 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
                             builder: (context) => Mobile(uid: uid)));
                   },
                   child: Container(
-                    width: 170.0,
-                    height: 170.0,
+                    width: 160.0,
+                    height: 160.0,
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.amber, width: 3.0),
+                        borderRadius: BorderRadius.circular(20.0),
+                        border:
+                            Border.all(color: Colors.limeAccent, width: 5.0),
                         image: DecorationImage(
                             image: NetworkImage(
-                              'https://5.imimg.com/data5/RN/RU/MY-10334144/mobile-accessories-500x500.jpg',
+                              'https://t4.ftcdn.net/jpg/03/64/41/07/360_F_364410725_IFLJi9mHRoeZ8W2bcGX1sxVJka14RmwZ.jpg',
                             ),
-                            fit: BoxFit.fill)),
+                            fit: BoxFit.cover)),
                   ),
                 ),
               ),
+              SizedBox(
+                width: 10.0,
+              ),
               Card(
+                elevation: 18.0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
                 child: new InkWell(
                   onTap: () {
                     Navigator.push(
@@ -138,15 +153,17 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
                             builder: (context) => Grocery(uid: uid)));
                   },
                   child: Container(
-                    width: 170.0,
-                    height: 170.0,
+                    width: 160.0,
+                    height: 160.0,
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.amber, width: 3.0),
+                        borderRadius: BorderRadius.circular(20.0),
+                        border:
+                            Border.all(color: Colors.limeAccent, width: 5.0),
                         image: DecorationImage(
                             image: NetworkImage(
-                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvl8_We5H4FlRm4PLubXHYkSErGxmkwU9mJrJZvc05PlG57Vbey1nS_PpFAXLo6DdC8io&usqp=CAU',
+                              'https://res.cloudinary.com/culturemap-com/image/upload/ar_4:3,c_fill,g_faces:center,w_980/v1622057735/photos/277221_original.jpg',
                             ),
-                            fit: BoxFit.fill)),
+                            fit: BoxFit.cover)),
                   ),
                 ),
               ),
@@ -154,21 +171,27 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
           ),
           SizedBox(height: 10.0),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 65.0),
-                child: Text(
-                  'Mobile Accessories',
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                ),
+              SizedBox(
+                width: 20.0,
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 30.0),
-                child: Text(
-                  'Grocery',
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                ),
+              Text(
+                'Mobile Accessories',
+                style: TextStyle(
+                    fontSize: 17.0,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 2.0),
+              ),
+              SizedBox(
+                width: 70.0,
+              ),
+              Text(
+                'Grocery',
+                style: TextStyle(
+                    fontSize: 17.0,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 2.0),
               ),
             ],
           ),
@@ -177,7 +200,13 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
           ),
           Row(
             children: [
+              SizedBox(
+                width: 6.0,
+              ),
               Card(
+                elevation: 18.0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
                 child: new InkWell(
                   onTap: () {
                     Navigator.push(
@@ -186,19 +215,27 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
                             builder: (context) => Stationary(uid: uid)));
                   },
                   child: Container(
-                    width: 170.0,
-                    height: 170.0,
+                    width: 160.0,
+                    height: 160.0,
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.amber, width: 3.0),
+                        borderRadius: BorderRadius.circular(20.0),
+                        border:
+                            Border.all(color: Colors.limeAccent, width: 5.0),
                         image: DecorationImage(
                             image: NetworkImage(
-                              'https://freebies2deals.com/wp-content/uploads/2013/08/freebies2deals-woot-school-supplies.png',
+                              'https://d1amk1w0mr5k0.cloudfront.net/blog/wp-content/uploads/2018/08/GettyImages-802465010-1.jpg',
                             ),
-                            fit: BoxFit.fill)),
+                            fit: BoxFit.cover)),
                   ),
                 ),
               ),
+              SizedBox(
+                width: 10.0,
+              ),
               Card(
+                elevation: 18.0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
                 child: new InkWell(
                   onTap: () {
                     Navigator.push(
@@ -207,14 +244,16 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
                             builder: (context) => Medicines(uid: uid)));
                   },
                   child: Container(
-                    width: 170.0,
-                    height: 170.0,
+                    width: 160.0,
+                    height: 160.0,
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.amber, width: 3.0),
+                        borderRadius: BorderRadius.circular(20.0),
+                        border:
+                            Border.all(color: Colors.limeAccent, width: 5.0),
                         image: DecorationImage(
                             image: NetworkImage(
-                                'https://media.istockphoto.com/photos/tablet-of-pills-and-syrup-medicine-picture-id1015072450?k=20&m=1015072450&s=170667a&w=0&h=erno8OT-uUdPvtVAGPfhzO6oA3pzNQ4ElCcx6o-bKVU='),
-                            fit: BoxFit.fill)),
+                                'https://static.toiimg.com/thumb/msid-81532660/81532660.jpg?width=500&resizemode=4'),
+                            fit: BoxFit.fitHeight)),
                   ),
                 ),
               ),
@@ -222,21 +261,27 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
           ),
           SizedBox(height: 10.0),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 40.0),
-                child: Text(
-                  'Stationary',
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                ),
+              SizedBox(
+                width: 50.0,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30.0, right: 10.0),
-                child: Text(
-                  'Medicines',
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                ),
+              Text(
+                'Stationary',
+                style: TextStyle(
+                    fontSize: 17.0,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 2.0),
+              ),
+              SizedBox(
+                width: 100.0,
+              ),
+              Text(
+                'Medicines',
+                style: TextStyle(
+                    fontSize: 17.0,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 2.0),
               ),
             ],
           ),

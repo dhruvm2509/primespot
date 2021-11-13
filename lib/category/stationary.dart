@@ -18,11 +18,11 @@ class _StationaryState extends State<Stationary> {
   _StationaryState(this.uid);
   @override
   final List<String> imagesList = [
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS23zgFtgDmDM6eXtgoKGOtAifHJYs7ROrvaw&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKLD5drzcavpGhB_jG7WWD6o7GL9Yu7t7Bdg&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkh20apfpSedKjCOKh51cANVgY_sWR-VUiSA&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIE92u0D4tpzbTJcE1y-3atIIknPPWTzJeeA&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGaZScmrg-rpaMyCLCFnd3ui_3cLjL8UAVAg&usqp=CAU',
+    'https://m.media-amazon.com/images/I/61pBQ64r7GL._SX679_.jpg',
+    'https://ph-live-05.slatic.net/p/a11acd138c10063107fe0e456b04fdcb.jpg_720x720q80.jpg_.webp',
+    'https://static-01.daraz.com.bd/p/08c379bab600f18fc144d17b35e7f3ed.jpg',
+    'https://images-na.ssl-images-amazon.com/images/I/51daAFQzwZS.jpg',
+    'https://www.advertgallery.com/wp-content/uploads/2018/11/add-gel-the-worlds-finest-gel-pen-ad-times-of-india-mumbai-25-11-2018.png',
   ];
 
   List<ProductItem> allProducts = [];
@@ -52,13 +52,14 @@ class _StationaryState extends State<Stationary> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
-        title: Center(
+        title: Padding(
+          padding: const EdgeInsets.only(left: 60.0),
           child: Text(
             'Stationaries',
             style: TextStyle(
-                letterSpacing: 1.6,
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0),
+                letterSpacing: 2.5,
+                fontWeight: FontWeight.w900,
+                fontSize: 25.0),
           ),
         ),
       ),
@@ -127,15 +128,38 @@ class _StationaryState extends State<Stationary> {
               );
             }).toList(),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 200.0),
-            child: Text(
-              'Best Sellers',
-              style: TextStyle(
-                  fontSize: 23.0,
-                  letterSpacing: 2.0,
-                  fontWeight: FontWeight.w900),
-            ),
+          Row(
+            children: [
+              SizedBox(
+                width: 10.0,
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: 20.0,
+                child: ClipOval(
+                  child: Image(
+                    image: NetworkImage(
+                        'https://img.freepik.com/free-vector/start_53876-25533.jpg?size=338&ext=jpg'),
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 5.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  right: 140.0,
+                ),
+                child: Text(
+                  'Best Sellers',
+                  style: TextStyle(
+                      fontSize: 25.0,
+                      letterSpacing: 2.0,
+                      fontWeight: FontWeight.w900),
+                ),
+              ),
+            ],
           ),
           SizedBox(height: 15.0),
           Padding(
@@ -145,7 +169,7 @@ class _StationaryState extends State<Stationary> {
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 350,
+                        height: 340,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
                             itemCount: allProducts.length,
