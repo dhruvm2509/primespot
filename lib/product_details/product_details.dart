@@ -98,6 +98,7 @@ class _Product_detailsState extends State<Product_details> {
   }
 
   getPayment(String amount) {
+    addNotificationForPayment();
     var option = {
       'key': 'rzp_test_x8HVnQqW8V4ugg',
       'amount': int.parse(amount) * 100,
@@ -158,6 +159,34 @@ class _Product_detailsState extends State<Product_details> {
     }
 
     addToNotifications();
+  }
+
+  Future addNotificationForPayment() async {
+    CollectionReference notify = FirebaseFirestore.instance
+        .collection('Seller')
+        .doc('${widget.products.sellerId}')
+        .collection('Notifications');
+
+    notify
+        // .doc(
+        //     '${widget.products.productName}${FirebaseAuth.instance.currentUser!.phoneNumber}')
+        .add({
+      'ProductName': widget.products.productName,
+      'ProductDescription': widget.products.productDescription,
+      'Price': widget.products.price,
+      'Category': widget.products.category,
+      'mobileNumber': FirebaseAuth.instance.currentUser!.phoneNumber,
+      'buyerId': FirebaseAuth.instance.currentUser!.phoneNumber,
+      'imageUrl': widget.products.imageUrl,
+      'BuyerName': '$buyerName',
+      'Message':
+          "An attempt has been made to pay for Your Product ${widget.products.productName}",
+    }).then((_) {
+      print(" added Notification");
+      // Navigator.pop(context);
+    }).catchError((error) {
+      print(error);
+    });
   }
 
   Future addToNotifications() async {
