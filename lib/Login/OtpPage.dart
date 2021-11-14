@@ -185,7 +185,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 233.0, left: 35.0),
+                    padding: const EdgeInsets.only(top: 233.0, left: 50.0),
                     child: Container(
                       height: 35.0,
                       width: 290.0,
@@ -197,9 +197,9 @@ class _OTPScreenState extends State<OTPScreen> {
                         child: Text(
                           'Verify +91- ${widget.phone}',
                           style: TextStyle(
-                              letterSpacing: 2.0,
+                              letterSpacing: 1.5,
                               fontWeight: FontWeight.w900,
-                              fontSize: 26,
+                              fontSize: 22,
                               color: Colors.black),
                         ),
                       ),

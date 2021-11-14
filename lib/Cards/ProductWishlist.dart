@@ -31,9 +31,9 @@ class _ProductCardWishlistState extends State<ProductCardWishlist> {
         .collection('Notifications');
 
     notify
-        .doc(
-            '${widget.products.productName}${FirebaseAuth.instance.currentUser!.phoneNumber}')
-        .set({
+        // .doc(
+        //     '${widget.products.productName}${FirebaseAuth.instance.currentUser!.phoneNumber}')
+        .add({
       'ProductName': widget.products.productName,
       'ProductDescription': widget.products.productDescription,
       'Price': widget.products.price,

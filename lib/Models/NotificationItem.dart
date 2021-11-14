@@ -1,7 +1,7 @@
 class NotificationItem {
   String productName = "";
   String productDescription = "";
-  int price = 0;
+  String price = "";
   String category = "";
   String mobileNumber = "";
   String buyerId = "";

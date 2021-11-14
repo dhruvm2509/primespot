@@ -54,63 +54,63 @@ class _NotificationsState extends State<Notifications> {
           child: Text('Notifications'),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 158.0, top: 10),
-              child: Container(
-                child: ElevatedButton(
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return Dialog(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40)),
-                              elevation: 16,
-                              child: Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                                child: Container(
-                                  height: 200.0,
-                                  width: 380.0,
-                                  child: ListView(
-                                    children: <Widget>[
-                                      SizedBox(height: 20),
-                                      Center(
-                                        child: Text(
-                                          "Are you sure you want to delete all your Notifications?",
-                                          style: TextStyle(
-                                              fontSize: 24,
-                                              color: Colors.blue,
-                                              fontWeight: FontWeight.bold),
-                                        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 158.0, top: 10),
+            child: Container(
+              child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Dialog(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(40)),
+                            elevation: 16,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                              child: Container(
+                                height: 200.0,
+                                width: 380.0,
+                                child: ListView(
+                                  children: <Widget>[
+                                    SizedBox(height: 20),
+                                    Center(
+                                      child: Text(
+                                        "Are you sure you want to delete all your Notifications?",
+                                        style: TextStyle(
+                                            fontSize: 24,
+                                            color: Colors.blue,
+                                            fontWeight: FontWeight.bold),
                                       ),
-                                      Padding(
-                                          padding: EdgeInsets.fromLTRB(
-                                              30.0, 25.0, 30.0, 20.0),
-                                          child: ElevatedButton(
-                                            child: Text('Yes'),
-                                            onPressed: () {
-                                              deleteNotifications();
-                                              Navigator.pop(context);
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              primary: Colors.green[600],
-                                            ),
-                                          )),
-                                    ],
-                                  ),
+                                    ),
+                                    Padding(
+                                        padding: EdgeInsets.fromLTRB(
+                                            30.0, 25.0, 30.0, 20.0),
+                                        child: ElevatedButton(
+                                          child: Text('Yes'),
+                                          onPressed: () {
+                                            deleteNotifications();
+                                            Navigator.pop(context);
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors.green[600],
+                                          ),
+                                        )),
+                                  ],
                                 ),
                               ),
-                            );
-                          });
-                    },
-                    child: Text('Clear Notifications')),
-              ),
+                            ),
+                          );
+                        });
+                  },
+                  child: Text('Clear Notifications')),
             ),
-            Container(
-              height: 800,
+          ),
+          SingleChildScrollView(
+            child: Container(
+              height: 600,
               child: ListView.builder(
                   padding: const EdgeInsets.all(8),
                   itemCount: list.length,
@@ -120,8 +120,8 @@ class _NotificationsState extends State<Notifications> {
                     );
                   }),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

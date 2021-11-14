@@ -79,7 +79,7 @@ class LoginScreenState extends State<LoginScreen> {
                         color: Colors.black,
                         fontSize: 25,
                         fontWeight: FontWeight.w900,
-                        letterSpacing: 2.5,
+                        letterSpacing: 1.0,
                       ),
                     ),
                   ),

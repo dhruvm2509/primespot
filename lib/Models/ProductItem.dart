@@ -1,9 +1,9 @@
 class ProductItem {
   String productName = "";
   String productDescription = "";
-  int price = 0;
+  String price = "";
   String category = "";
-  int mobileNumber = 0;
+  String mobileNumber = "";
   String sellerId = "";
   String imageUrl = "";
 
