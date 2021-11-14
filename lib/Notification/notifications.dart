@@ -48,31 +48,47 @@ class _NotificationsState extends State<Notifications> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Text('Notifications'),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.amber,
+          title: Center(
+            child: Text(
+              'Notifications',
+              style: TextStyle(
+                letterSpacing: 2.0,
+                fontSize: 25.0,
+                color: Colors.white,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          ),
         ),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 158.0, top: 10),
-            child: Container(
-              child: ElevatedButton(
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 158.0, top: 10),
+              child: Container(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40.0)),
+                    elevation: 20.0,
+                    primary: Colors.green,
+                  ),
                   onPressed: () {
                     showDialog(
                         context: context,
                         builder: (context) {
                           return Dialog(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(40)),
+                                borderRadius: BorderRadius.circular(35)),
                             elevation: 16,
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                              padding: const EdgeInsets.fromLTRB(20, 5, 10, 0),
                               child: Container(
                                 height: 200.0,
-                                width: 380.0,
+                                width: 400.0,
                                 child: ListView(
                                   children: <Widget>[
                                     SizedBox(height: 20),
@@ -81,23 +97,34 @@ class _NotificationsState extends State<Notifications> {
                                         "Are you sure you want to delete all your Notifications?",
                                         style: TextStyle(
                                             fontSize: 24,
-                                            color: Colors.blue,
-                                            fontWeight: FontWeight.bold),
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w900),
                                       ),
                                     ),
                                     Padding(
-                                        padding: EdgeInsets.fromLTRB(
-                                            30.0, 25.0, 30.0, 20.0),
-                                        child: ElevatedButton(
-                                          child: Text('Yes'),
-                                          onPressed: () {
-                                            deleteNotifications();
-                                            Navigator.pop(context);
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                            primary: Colors.green[600],
-                                          ),
-                                        )),
+                                      padding: EdgeInsets.fromLTRB(
+                                          30.0, 45.0, 30.0, 20.0),
+                                      child: ElevatedButton(
+                                        child: Text(
+                                          'Yes',
+                                          style: TextStyle(
+                                              fontSize: 24,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w900),
+                                        ),
+                                        onPressed: () {
+                                          deleteNotifications();
+                                          Navigator.pop(context);
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(40.0)),
+                                          elevation: 20.0,
+                                          primary: Colors.red,
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -105,23 +132,31 @@ class _NotificationsState extends State<Notifications> {
                           );
                         });
                   },
-                  child: Text('Clear Notifications')),
+                  child: Text(
+                    'Clear Notifications',
+                    style: TextStyle(
+                        fontSize: 17.0,
+                        letterSpacing: 1.0,
+                        fontWeight: FontWeight.w900),
+                  ),
+                ),
+              ),
             ),
-          ),
-          SingleChildScrollView(
-            child: Container(
-              height: 600,
-              child: ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  itemCount: list.length,
-                  itemBuilder: (context, index) {
-                    return NotificationCard(
-                      notify: list[index],
-                    );
-                  }),
+            SingleChildScrollView(
+              child: Container(
+                height: 559,
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: list.length,
+                    itemBuilder: (context, index) {
+                      return NotificationCard(
+                        notify: list[index],
+                      );
+                    }),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

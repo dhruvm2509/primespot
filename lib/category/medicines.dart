@@ -21,7 +21,6 @@ class _MedicinesState extends State<Medicines> {
     'https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/114544534/original/6f215c8b616a1d476fca4f22117e422d448b2557/make-attractive-ads-for-your-medicine.jpg',
     'https://5.imimg.com/data5/SELLER/Default/2021/5/UP/VR/QP/16096027/paracetamol-tablet-500x500.jpg',
     'https://www.advertgallery.com/wp-content/uploads/2018/04/bring-your-dry-eyes-back-to-life-eye-spa-eye-drops-ad-bombay-times-07-04-2018.png',
-    'https://lh3.googleusercontent.com/proxy/e7yInFo_Vcf-TXqo8EhL3yORUIEOt2Q6g7uVyNsSihXQjmL6xZlweDqLGuOEO6GuZjiT6fdCPOajD_77cyZPVA8KxjVMK2pNVhlmCU9bukp2Wvi98PTugL8',
     'https://www.sellbuystuffs.com/images/2da688c4-60eb-4a9d-aaf7-eacd12d95d3d.jpg',
   ];
 

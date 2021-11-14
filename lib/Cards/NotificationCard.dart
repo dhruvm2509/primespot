@@ -44,7 +44,7 @@ class _NotificationCardState extends State<NotificationCard> {
                             borderRadius: BorderRadius.circular(40)),
                         elevation: 16,
                         child: Container(
-                          height: 350.0,
+                          height: 400.0,
                           width: 400.0,
                           child: ListView(
                             children: <Widget>[
@@ -54,8 +54,9 @@ class _NotificationCardState extends State<NotificationCard> {
                                   "Buyer Details",
                                   style: TextStyle(
                                       fontSize: 24,
-                                      color: Colors.blue,
-                                      fontWeight: FontWeight.bold),
+                                      color: Colors.amber,
+                                      fontWeight: FontWeight.w900,
+                                      letterSpacing: 1.0),
                                 ),
                               ),
                               SizedBox(height: 20),
@@ -65,19 +66,20 @@ class _NotificationCardState extends State<NotificationCard> {
                                 child: Text(
                                   'Buyer Name:',
                                   style: TextStyle(
-                                      color: Colors.blueGrey,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
+                                    color: Colors.blueGrey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w900,
+                                  ),
                                 ),
                               ),
                               Padding(
                                   padding: EdgeInsets.symmetric(
-                                      vertical: 0, horizontal: 40),
+                                      vertical: 10, horizontal: 40),
                                   child: Text(
                                     widget.notify.buyerName,
                                     style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
+                                        fontSize: 23,
+                                        fontWeight: FontWeight.w900,
                                         fontStyle: FontStyle.italic),
                                   )),
                               Padding(
@@ -86,19 +88,20 @@ class _NotificationCardState extends State<NotificationCard> {
                                 child: Text(
                                   'Mobile Number',
                                   style: TextStyle(
-                                      color: Colors.blueGrey,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
+                                    color: Colors.blueGrey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w900,
+                                  ),
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(
-                                    vertical: 5, horizontal: 40),
+                                    vertical: 10, horizontal: 40),
                                 child: Text(
                                   '${widget.notify.mobileNumber}',
                                   style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
+                                      fontSize: 23,
+                                      fontWeight: FontWeight.w900,
                                       fontStyle: FontStyle.italic),
                                 ),
                               ),
@@ -108,19 +111,20 @@ class _NotificationCardState extends State<NotificationCard> {
                                 child: Text(
                                   'Buyer Address',
                                   style: TextStyle(
-                                      color: Colors.blueGrey,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
+                                    color: Colors.blueGrey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w900,
+                                  ),
                                 ),
                               ),
                               Padding(
                                   padding: EdgeInsets.symmetric(
-                                      vertical: 5, horizontal: 40),
+                                      vertical: 10, horizontal: 40),
                                   child: Text(
                                     buyerAddress,
                                     style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
+                                        fontSize: 23,
+                                        fontWeight: FontWeight.w900,
                                         fontStyle: FontStyle.italic),
                                   )),
                               Padding(
@@ -132,7 +136,11 @@ class _NotificationCardState extends State<NotificationCard> {
                                       Navigator.pop(context);
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: Colors.green[600],
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(40.0)),
+                                      elevation: 20.0,
+                                      primary: Colors.green,
                                     ),
                                   )),
                             ],
@@ -142,84 +150,39 @@ class _NotificationCardState extends State<NotificationCard> {
                     });
               },
               child: Card(
-                color: Colors.amberAccent,
+                color: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //       borderRadius: BorderRadius.circular(20.0),
-                    //       image: DecorationImage(
-                    //         image: NetworkImage(widget.notify.imageUrl == ""
-                    //             ? image
-                    //             : widget.notify.imageUrl),
-                    //       )),
-                    //   height: 150.0,
-                    //   width: 140.0,
-                    // ),
                     Container(
                         child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        // SizedBox(
-                        //   height: 5.0,
-                        // ),
-
                         SizedBox(
                           height: 5.0,
                         ),
-
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 2.0, left: 10.0, bottom: 5.0),
+                            top: 20.0,
+                            left: 30.0,
+                            bottom: 5.0,
+                          ),
                           child: Container(
-                            height: 40.0,
-                            width: 300.0,
+                            height: 60.0,
+                            width: 280.0,
                             child: Text(
                               widget.notify.message,
                               style: TextStyle(
-                                  fontSize: 15.0,
+                                  fontSize: 17.0,
                                   letterSpacing: 1.5,
-                                  color: Colors.green),
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.w900),
                             ),
                           ),
                         ),
-                        // Container(
-                        //   height: 25,
-                        //   width: 250,
-
-                        //   child: FittedBox(
-                        //       fit: BoxFit.fitWidth,
-                        //       child: Text(widget.notify.message),),
-                        // ),
-                        // SizedBox(
-                        //   width: MediaQuery.of(context).size.width,
-                        //   child: FittedBox(
-                        //     fit: BoxFit.contain,
-                        //     child: Text(
-                        //       widget.notify.message,
-                        //       textAlign: TextAlign.justify,
-                        //       style: TextStyle(
-                        //           color: Colors.black,
-                        //           fontWeight: FontWeight.w600,
-                        //           fontStyle: FontStyle.normal),
-                        //     ),
-                        //   ),
-                        // ),
-
-                        // Container(
-                        //   height: 50,
-                        //   child: Text(
-                        //     ' ${widget.notify.message}/-',
-                        //     style: TextStyle(
-                        //         fontSize: 15.0,
-                        //         letterSpacing: 1.0,
-                        //         fontWeight: FontWeight.w700),
-                        //   ),
-                        // ),
                       ],
                     ))
                   ],

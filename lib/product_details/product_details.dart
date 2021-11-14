@@ -238,6 +238,28 @@ class _Product_detailsState extends State<Product_details> {
               ),
             ),
             Padding(
+              padding: const EdgeInsets.only(left: 300.0),
+              child: Container(
+                width: 60.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(25.0),
+                      bottomLeft: Radius.circular(25.0)),
+                  color: Colors.yellow,
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    addToWishlist();
+                  },
+                  icon: Icon(
+                    Icons.favorite,
+                    color: Colors.black,
+                    size: 30.0,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.only(
                 top: 340,
               ),
@@ -251,6 +273,7 @@ class _Product_detailsState extends State<Product_details> {
                     )),
                 child: SingleChildScrollView(
                   child: Container(
+                    height: 590.0,
                     child: Column(
                       children: [
                         SizedBox(
@@ -283,12 +306,6 @@ class _Product_detailsState extends State<Product_details> {
                                   ),
                                 ),
                               ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  addToWishlist();
-                                },
-                                child: Icon(Icons.favorite),
-                              ),
                             ],
                           ),
                         ),
@@ -298,7 +315,7 @@ class _Product_detailsState extends State<Product_details> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            height: 250,
+                            height: 335,
                             width: double.infinity,
                             child: Card(
                               shape: RoundedRectangleBorder(

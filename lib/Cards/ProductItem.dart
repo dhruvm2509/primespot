@@ -31,6 +31,7 @@ class _ProductCardItemState extends State<ProductCardItem> {
               },
               child: Container(
                 padding: EdgeInsets.only(left: 15.0),
+                width: 450,
                 height: 150.0,
                 child: Card(
                   color: Colors.white,
@@ -48,13 +49,17 @@ class _ProductCardItemState extends State<ProductCardItem> {
                             image: NetworkImage(widget.products.imageUrl == ""
                                 ? image
                                 : widget.products.imageUrl),
-                            fit: BoxFit.fitWidth,
+                            fit: BoxFit.fill,
                           ),
                         ),
                       ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
                       Container(
+                        width: 170.0,
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             // SizedBox(
                             //   height: 5.0,
