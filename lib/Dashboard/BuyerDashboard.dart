@@ -74,7 +74,6 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
-
         title: Center(
             child: buyerName == null
                 ? Text('Buyer\'s Dashboard')

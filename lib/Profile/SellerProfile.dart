@@ -78,43 +78,32 @@ class MapScreenState extends State<SellerProfile>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.white,
-        child: ListView(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Container(
-                  height: 250.0,
-                  color: Colors.white,
-                  child: Column(children: <Widget>[
-                    Padding(
-                        padding: EdgeInsets.only(left: 20.0, top: 20.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.black,
-                              size: 22.0,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 55.0),
-                              child: Text(' SELLER\'S PROFILE ',
-                                  style: TextStyle(
-                                      letterSpacing: 2.0,
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 20.0,
-                                      fontFamily: 'sans-serif-light',
-                                      color: Colors.black)),
-                            )
-                          ],
-                        )),
-                    Padding(
-                        padding: EdgeInsets.only(top: 20.0),
-                        child: Stack(
-                          fit: StackFit.loose,
-                          children: <Widget>[
+        appBar: AppBar(
+          backgroundColor: Colors.amber,
+          title: Center(
+            child: Text(
+              'Seller Profile',
+              style: TextStyle(
+                  letterSpacing: 2.0,
+                  fontWeight: FontWeight.w900,
+                  fontSize: 25.0),
+            ),
+          ),
+        ),
+        body: Container(
+          color: Colors.white,
+          child: ListView(
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Container(
+                    height: 250.0,
+                    color: Colors.white,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(top: 20.0),
+                          child: Stack(fit: StackFit.loose, children: <Widget>[
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -131,402 +120,362 @@ class MapScreenState extends State<SellerProfile>
                                     )),
                               ],
                             ),
-                          ],
-                        )),
-                  ]),
-                )
-              ],
-            ),
-            Container(
-              color: Color(0xffFFFFFF),
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 25.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text(
-                                  'Personal Information',
-                                  style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 2.0),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                _status ? _getEditIcon() : Container(),
-                              ],
-                            )
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text(
-                                  'Name',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 2.0),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 2.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Flexible(
-                              child: TextField(
-                                style: TextStyle(
-                                  color: Colors.green,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w900,
-                                  letterSpacing: 2.0,
-                                  fontStyle: FontStyle.italic,
-                                ),
-                                controller: _controller,
-                                // ..text = oldFullName;
-                                decoration: const InputDecoration(
-                                    // hintText: "Enter Your Name",
+                            Padding(
+                                padding:
+                                    EdgeInsets.only(top: 90.0, right: 100.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    CircleAvatar(
+                                      backgroundColor: Colors.red,
+                                      radius: 25.0,
+                                      child: Icon(
+                                        Icons.camera_alt,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                )),
+                          ]),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    color: Color(0xffFFFFFF),
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 25.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text(
+                                        'Personal Information',
+                                        style: TextStyle(
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      _status ? _getEditIcon() : Container(),
+                                    ],
+                                  )
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text(
+                                        'Name',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Flexible(
+                                    child: TextField(
+                                      controller: _controller,
+                                      // ..text = oldFullName;
+                                      decoration: const InputDecoration(
+                                          // hintText: "Enter Your Name",
+                                          ),
+                                      onChanged: (value) {
+                                        setState(() {
+                                          newName = value;
+                                        });
+                                      },
+                                      enabled: !_status,
+                                      autofocus: !_status,
                                     ),
-                                onChanged: (value) {
-                                  setState(() {
-                                    newName = value;
-                                  });
-                                },
-                                enabled: !_status,
-                                autofocus: !_status,
-                              ),
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text(
-                                  'ShopName',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 2.0),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 2.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Flexible(
-                              child: TextField(
-                                style: TextStyle(
-                                  color: Colors.green,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w900,
-                                  letterSpacing: 2.0,
-                                  fontStyle: FontStyle.italic,
-                                ),
-                                controller: _controller5,
-                                // ..text = oldFullName;
-                                decoration: const InputDecoration(
-                                    // hintText: "Enter Your Name",
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text(
+                                        'ShopName',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Flexible(
+                                    child: TextField(
+                                      controller: _controller5,
+                                      // ..text = oldFullName;
+                                      decoration: const InputDecoration(
+                                          // hintText: "Enter Your Name",
+                                          ),
+                                      onChanged: (value) {
+                                        setState(() {
+                                          newShopAddress = value;
+                                        });
+                                      },
+                                      enabled: !_status,
+                                      autofocus: !_status,
                                     ),
-                                onChanged: (value) {
-                                  setState(() {
-                                    newShopAddress = value;
-                                  });
-                                },
-                                enabled: !_status,
-                                autofocus: !_status,
-                              ),
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text(
-                                  'ShopAddress',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 2.0),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 2.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Flexible(
-                              child: TextField(
-                                  style: TextStyle(
-                                    color: Colors.green,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w900,
-                                    letterSpacing: 2.0,
-                                    fontStyle: FontStyle.italic,
                                   ),
-                                  controller: _controller1,
-                                  decoration: const InputDecoration(
-                                      hintText: "Enter Shop Address"),
-                                  enabled: !_status,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      newShopAddress = value;
-                                    });
-                                  }),
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text(
-                                  'Delivery',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 2.0),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 2.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Flexible(
-                              child: TextField(
-                                  style: TextStyle(
-                                    color: Colors.green,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w900,
-                                    letterSpacing: 2.0,
-                                    fontStyle: FontStyle.italic,
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text(
+                                        'ShopAddress',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
                                   ),
-                                  controller: _controller6,
-                                  decoration: const InputDecoration(
-                                      hintText: "Enter Yes/No"),
-                                  enabled: !_status,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      newDelivery = value;
-                                    });
-                                  }),
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text(
-                                  'City',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 2.0),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 2.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Flexible(
-                              child: TextField(
-                                  style: TextStyle(
-                                    color: Colors.green,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w900,
-                                    letterSpacing: 2.0,
-                                    fontStyle: FontStyle.italic,
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Flexible(
+                                    child: TextField(
+                                        controller: _controller1,
+                                        decoration: const InputDecoration(
+                                            hintText: "Enter Shop Address"),
+                                        enabled: !_status,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            newShopAddress = value;
+                                          });
+                                        }),
                                   ),
-                                  controller: _controller3,
-                                  decoration: const InputDecoration(
-                                      hintText: "Enter City"),
-                                  enabled: !_status,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      newCity = value;
-                                    });
-                                  }),
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text(
-                                  'PinCode',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 2.0),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 2.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Flexible(
-                              child: TextField(
-                                  style: TextStyle(
-                                    color: Colors.green,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w900,
-                                    letterSpacing: 2.0,
-                                    fontStyle: FontStyle.italic,
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text(
+                                        'Delivery',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
                                   ),
-                                  controller: _controller4,
-                                  decoration: const InputDecoration(
-                                      hintText: "Enter PinCode"),
-                                  enabled: !_status,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      newPinCode = value;
-                                    });
-                                  }),
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text(
-                                  'Mobile Number',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 2.0),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )),
-                    Padding(
-                        padding:
-                            EdgeInsets.only(left: 25.0, right: 25.0, top: 2.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Flexible(
-                              child: TextField(
-                                  style: TextStyle(
-                                    color: Colors.green,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w900,
-                                    letterSpacing: 2.0,
-                                    fontStyle: FontStyle.italic,
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Flexible(
+                                    child: TextField(
+                                        controller: _controller6,
+                                        decoration: const InputDecoration(
+                                            hintText: "Enter Yes/No"),
+                                        enabled: !_status,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            newDelivery = value;
+                                          });
+                                        }),
                                   ),
-                                  controller: _controller2,
-                                  decoration: const InputDecoration(
-                                      hintText: "Enter Mobile Number"),
-                                  enabled: !_status,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      newMobileNumber = value;
-                                    });
-                                  }),
-                            ),
-                          ],
-                        )),
-                    !_status ? _getActionButtons() : Container(),
-                  ],
-                ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text(
+                                        'City',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Flexible(
+                                    child: TextField(
+                                        controller: _controller3,
+                                        decoration: const InputDecoration(
+                                            hintText: "Enter City"),
+                                        enabled: !_status,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            newCity = value;
+                                          });
+                                        }),
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text(
+                                        'PinCode',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Flexible(
+                                    child: TextField(
+                                        controller: _controller4,
+                                        decoration: const InputDecoration(
+                                            hintText: "Enter PinCode"),
+                                        enabled: !_status,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            newPinCode = value;
+                                          });
+                                        }),
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text(
+                                        'Mobile',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Flexible(
+                                    child: TextField(
+                                        controller: _controller2,
+                                        decoration: const InputDecoration(
+                                            hintText: "Enter Mobile Number"),
+                                        enabled: !_status,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            newMobileNumber = value;
+                                          });
+                                        }),
+                                  ),
+                                ],
+                              )),
+                          !_status ? _getActionButtons() : Container(),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
               ),
-            )
-          ],
-        ),
-      ),
-    );
+            ],
+          ),
+        ));
   }
 
   @override
