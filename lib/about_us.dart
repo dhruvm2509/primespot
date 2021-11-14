@@ -52,7 +52,7 @@ class About_us extends StatelessWidget {
             ),
           ),
           Container(
-            height: 630,
+            height: 545,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -190,7 +190,7 @@ class About_us extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 35.0),
                             child: Container(
-                              width: 250,
+                              width: 220,
                               child: Column(
                                 children: [
                                   Row(

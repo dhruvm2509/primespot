@@ -38,23 +38,34 @@ class _WishlistState extends State<Wishlist> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Text('Wishlist'),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.amber,
+          title: Center(
+            child: Text(
+              'Wishlist',
+              style: TextStyle(
+                letterSpacing: 2.0,
+                fontSize: 25.0,
+                color: Colors.white,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          height: 600,
-          child: ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: list.length,
-              itemBuilder: (context, index) {
-                return ProductCardWishlist(
-                  products: list[index],
-                );
-              }),
+        body: SingleChildScrollView(
+          child: Container(
+            height: 570,
+            child: ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  return ProductCardWishlist(
+                    products: list[index],
+                  );
+                }),
+          ),
         ),
       ),
     );

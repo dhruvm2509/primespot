@@ -70,127 +70,175 @@ class _ProductCardWishlistState extends State<ProductCardWishlist> {
                         builder: (context) =>
                             Product_details(products: widget.products)));
               },
-              child: Card(
-                color: Colors.amberAccent,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.0),
-                          image: DecorationImage(
+              child: Container(
+                padding: EdgeInsets.only(left: 15.0),
+                height: 150.0,
+                child: Card(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 55.0,
+                        child: ClipOval(
+                          child: Image(
                             image: NetworkImage(widget.products.imageUrl == ""
                                 ? image
                                 : widget.products.imageUrl),
-                          )),
-                      height: 150.0,
-                      width: 140.0,
-                    ),
-                    Container(
-                        child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        // SizedBox(
-                        //   height: 5.0,
-                        // ),
-                        Text(
-                          ' ${widget.products.productName}',
-                          style: TextStyle(
-                              fontSize: 25.0,
-                              // letterSpacing: 1.0,
-                              fontWeight: FontWeight.w900),
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        Text(
-                          ' Price : Rs.${widget.products.price}/-',
-                          style: TextStyle(
-                              fontSize: 15.0,
-                              letterSpacing: 1.0,
-                              fontWeight: FontWeight.w700),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(100, 20, 0, 0),
-                          child: Container(
-                            child: InkWell(
-                                onTap: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return Dialog(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(40)),
-                                          elevation: 16,
-                                          child: Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                20, 5, 0, 0),
-                                            child: Container(
-                                              height: 200.0,
-                                              width: 380.0,
-                                              child: ListView(
-                                                children: <Widget>[
-                                                  SizedBox(height: 20),
-                                                  Center(
-                                                    child: Text(
-                                                      "Are you sure you want to delete this product from your wishlist?",
-                                                      style: TextStyle(
-                                                          fontSize: 24,
-                                                          color: Colors.blue,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                  ),
-                                                  Padding(
+                      ),
+                      Container(
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // SizedBox(
+                          //   height: 5.0,
+                          // ),
+                          Text(
+                            ' ${widget.products.productName}',
+                            style: TextStyle(
+                                fontSize: 25.0,
+                                letterSpacing: 2.0,
+                                fontWeight: FontWeight.w900),
+                          ),
+                          SizedBox(
+                            height: 5.0,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0),
+                            child: Text(
+                              ' Price : Rs.${widget.products.price}/-',
+                              style: TextStyle(
+                                  fontSize: 17.0,
+                                  letterSpacing: 1.0,
+                                  fontWeight: FontWeight.w800),
+                            ),
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(80, 35, 0, 0),
+                            child: Container(
+                              child: InkWell(
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Dialog(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(40)),
+                                            elevation: 16,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      20, 5, 0, 0),
+                                              child: Container(
+                                                height: 200.0,
+                                                width: 380.0,
+                                                child: ListView(
+                                                  children: <Widget>[
+                                                    SizedBox(height: 40),
+                                                    Container(
                                                       padding:
                                                           EdgeInsets.fromLTRB(
-                                                              30.0,
-                                                              25.0,
-                                                              30.0,
-                                                              20.0),
-                                                      child: ElevatedButton(
-                                                        child: Text('Yes'),
-                                                        onPressed: () {
-                                                          FirebaseFirestore
-                                                              .instance
-                                                              .collection(
-                                                                  'Buyer/${FirebaseAuth.instance.currentUser!.phoneNumber}/Wishlist')
-                                                              .doc(
-                                                                  '${widget.products.productName + widget.products.sellerId}')
-                                                              .delete();
-
-                                                          print(
-                                                              'Document Deleted');
-                                                          addNotification();
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        style: ElevatedButton
-                                                            .styleFrom(
-                                                          primary:
-                                                              Colors.green[600],
+                                                              10, 0, 0, 0),
+                                                      child: Center(
+                                                        child: Text(
+                                                          "Do you want to delete this product from your wishlist?",
+                                                          style: TextStyle(
+                                                              fontSize: 24,
+                                                              color:
+                                                                  Colors.black,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w900),
                                                         ),
-                                                      )),
-                                                ],
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                10.0,
+                                                                25.0,
+                                                                30.0,
+                                                                20.0),
+                                                        child: ElevatedButton(
+                                                          child: Text(
+                                                            'Yes',
+                                                            style: TextStyle(
+                                                                fontSize: 24,
+                                                                color: Colors
+                                                                    .white,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w900),
+                                                          ),
+                                                          onPressed: () {
+                                                            FirebaseFirestore
+                                                                .instance
+                                                                .collection(
+                                                                    'Buyer/${FirebaseAuth.instance.currentUser!.phoneNumber}/Wishlist')
+                                                                .doc(
+                                                                    '${widget.products.productName + widget.products.sellerId}')
+                                                                .delete();
+
+                                                            print(
+                                                                'Document Deleted');
+                                                            addNotification();
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          style: ElevatedButton
+                                                              .styleFrom(
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            40.0)),
+                                                            elevation: 20.0,
+                                                            primary: Colors.red,
+                                                          ),
+                                                        )),
+                                                  ],
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      });
-                                },
-                                child: Icon(Icons.delete)),
-                          ),
-                        )
-                      ],
-                    ))
-                  ],
+                                          );
+                                        });
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Delete',
+                                        style: TextStyle(
+                                            fontSize: 17.0,
+                                            letterSpacing: 1.0,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                      SizedBox(
+                                        width: 5.0,
+                                      ),
+                                      Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      ),
+                                    ],
+                                  )),
+                            ),
+                          )
+                        ],
+                      ))
+                    ],
+                  ),
+                  shadowColor: Colors.grey,
+                  elevation: 10.0,
                 ),
-                shadowColor: Colors.grey,
-                elevation: 10.0,
               ),
             ),
           ),
