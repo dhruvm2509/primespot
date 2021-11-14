@@ -20,8 +20,8 @@ class SellerDashboard extends StatefulWidget {
 class _SellerDashboardState extends State<SellerDashboard> {
   String productName = "";
   String productDescription = "";
-  int price = 0;
-  int mobileNumber = 0;
+  String price = "";
+  String mobileNumber = "";
   String sellerName = "";
   String sellerId = "";
   String? documentId;
@@ -47,7 +47,7 @@ class _SellerDashboardState extends State<SellerDashboard> {
       'ProductDescription': productDescription,
       'Price': price,
       'Category': category,
-      'mobileNumber': mobileNumber,
+      'mobileNumber': sellerId,
       'sellerId': sellerId,
       'imageUrl': imageUrl,
     }).then((value) {
@@ -154,8 +154,8 @@ class _SellerDashboardState extends State<SellerDashboard> {
                                   borderRadius: BorderRadius.circular(40)),
                               elevation: 16,
                               child: Container(
-                                height: 730.0,
-                                width: 400.0,
+                                height: 600.0,
+                                width: 450.0,
                                 child: ListView(
                                   children: <Widget>[
                                     SizedBox(height: 40),
@@ -166,7 +166,7 @@ class _SellerDashboardState extends State<SellerDashboard> {
                                             fontSize: 24,
                                             color: Colors.amber,
                                             fontWeight: FontWeight.w900,
-                                            letterSpacing: 2.0),
+                                            letterSpacing: 1.5),
                                       ),
                                     ),
                                     SizedBox(height: 20),
@@ -240,7 +240,7 @@ class _SellerDashboardState extends State<SellerDashboard> {
                                       child: (TextFormField(
                                         keyboardType: TextInputType.number,
                                         onChanged: (text) {
-                                          price = int.parse(text);
+                                          price = (text);
                                         },
                                         validator: (value) {
                                           if (value == null) {
@@ -250,33 +250,6 @@ class _SellerDashboardState extends State<SellerDashboard> {
                                         },
                                       )),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.fromLTRB(
-                                          30.0, 10.0, 30.0, 0.0),
-                                      child: Text(
-                                        'Contact Number',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w900,
-                                            letterSpacing: 2.0),
-                                      ),
-                                    ),
-                                    Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 0, horizontal: 30),
-                                        child: (TextFormField(
-                                          onChanged: (text) {
-                                            mobileNumber = int.parse(text);
-                                          },
-                                          keyboardType: TextInputType.number,
-                                          validator: (value) {
-                                            if (value == null) {
-                                              return 'Please enter a valid mobile number';
-                                            }
-                                            return null;
-                                          },
-                                        ))),
                                     Padding(
                                       padding: EdgeInsets.fromLTRB(
                                           30.0, 10.0, 30.0, 0.0),

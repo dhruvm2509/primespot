@@ -42,7 +42,7 @@ class _FirstPageState extends State<FirstPage> {
                       style: TextStyle(
                         fontSize: 20.0,
                         color: Colors.white,
-                        letterSpacing: 1.5,
+                        letterSpacing: 1.2,
                         fontWeight: FontWeight.w900,
                       ),
                     ),
@@ -73,7 +73,7 @@ class _FirstPageState extends State<FirstPage> {
                       style: TextStyle(
                         fontSize: 20.0,
                         color: Colors.white,
-                        letterSpacing: 1.5,
+                        letterSpacing: 1.2,
                         fontWeight: FontWeight.w900,
                       ),
                     ),

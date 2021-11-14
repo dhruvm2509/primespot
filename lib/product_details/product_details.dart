@@ -97,10 +97,10 @@ class _Product_detailsState extends State<Product_details> {
     print(response.message);
   }
 
-  getPayment(int amount) {
+  getPayment(String amount) {
     var option = {
       'key': 'rzp_test_x8HVnQqW8V4ugg',
-      'amount': amount * 100,
+      'amount': int.parse(amount) * 100,
       'name': sellerName,
       'prefill': {
         'contact': sellerMobile,
@@ -167,9 +167,9 @@ class _Product_detailsState extends State<Product_details> {
         .collection('Notifications');
 
     notify
-        .doc(
-            '${widget.products.productName}${FirebaseAuth.instance.currentUser!.phoneNumber}')
-        .set({
+        // .doc(
+        //     '${widget.products.productName}${FirebaseAuth.instance.currentUser!.phoneNumber}')
+        .add({
       'ProductName': widget.products.productName,
       'ProductDescription': widget.products.productDescription,
       'Price': widget.products.price,
@@ -363,7 +363,7 @@ class _Product_detailsState extends State<Product_details> {
                                                   BorderRadius.circular(40)),
                                           elevation: 16,
                                           child: Container(
-                                            height: 450.0,
+                                            height: 520.0,
                                             width: 400.0,
                                             child: ListView(
                                               children: <Widget>[
@@ -376,7 +376,7 @@ class _Product_detailsState extends State<Product_details> {
                                                         color: Colors.amber,
                                                         fontWeight:
                                                             FontWeight.w900,
-                                                        letterSpacing: 2.0),
+                                                        letterSpacing: 1.0),
                                                   ),
                                                 ),
                                                 SizedBox(height: 20),
@@ -390,7 +390,7 @@ class _Product_detailsState extends State<Product_details> {
                                                         fontSize: 18,
                                                         fontWeight:
                                                             FontWeight.w900,
-                                                        letterSpacing: 2.0),
+                                                        letterSpacing: 1.1),
                                                   ),
                                                 ),
                                                 Padding(
@@ -417,7 +417,7 @@ class _Product_detailsState extends State<Product_details> {
                                                         fontSize: 18,
                                                         fontWeight:
                                                             FontWeight.w900,
-                                                        letterSpacing: 2.0),
+                                                        letterSpacing: 1.1),
                                                   ),
                                                 ),
                                                 Padding(
@@ -444,7 +444,7 @@ class _Product_detailsState extends State<Product_details> {
                                                         fontSize: 18,
                                                         fontWeight:
                                                             FontWeight.w900,
-                                                        letterSpacing: 2.0),
+                                                        letterSpacing: 1.1),
                                                   ),
                                                 ),
                                                 Padding(
@@ -471,7 +471,7 @@ class _Product_detailsState extends State<Product_details> {
                                                         fontSize: 18,
                                                         fontWeight:
                                                             FontWeight.w900,
-                                                        letterSpacing: 2.0),
+                                                        letterSpacing: 1.1),
                                                   ),
                                                 ),
                                                 Padding(

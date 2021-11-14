@@ -382,15 +382,15 @@ class _MapViewState extends State<MapView> {
                                 child: Text(
                                   'Seller Address:',
                                   style: TextStyle(
-                                    letterSpacing: 1.5,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w900,
-                                  ),
+                                      letterSpacing: 1.1,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w900,
+                                      color: Colors.blueGrey),
                                 ),
                               ),
                               Padding(
                                   padding: EdgeInsets.only(
-                                      left: 40.0, right: 30.0, top: 5.0),
+                                      left: 50.0, right: 30.0, top: 5.0),
                                   child: Text(
                                     seller_address,
                                     style: TextStyle(
@@ -404,9 +404,10 @@ class _MapViewState extends State<MapView> {
                                 child: Text(
                                   'Buyer Address:',
                                   style: TextStyle(
-                                    letterSpacing: 1.5,
-                                    fontSize: 20,
+                                    letterSpacing: 1.1,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.w900,
+                                    color: Colors.blueGrey,
                                   ),
                                 ),
                               ),
