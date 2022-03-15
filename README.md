@@ -1,16 +1,54 @@
-# primespot
+# PrimeSpot
 
-A new Flutter project.
+Prime Spot is a one-stop solution for all our daily shopping needs. With this app, one can buy their daily essentials (like grocery items, Mobile Accessories, Stationaries, Medicines) within their city. 
+Clone the project through this link:
+   * For Mobile App:  https://github.com/dhruvm2509/Primespot
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Prime Spot has 2 Interfaces to users:
+First one for Buyers who wants to buy products within their city range and Second one for Sellers who wants to sell their products within their city. 
+This app will provide benefits to local Shopkeepers to grow their business. They can register their products and can sell it throughout their city range. And the customers within their city can buy and will get the product delivered within short duration of time (couple of Hours).
+We are authenticating users through mobile number and OTP(One Time Password) as OTP is more secure form of authentication. 
+If the user is Buyer, then after logging in, He/she can find various products that are uploaded by different Sellers within their city. If they find the product useful and wants to buy the product then they can see the Seller’s contact and can get direction to the Seller’s Shop if home Delivery isn’t available after payment. If Buyer wants to save that product for future, he/she can add that to their Wishlist and can purchase that product later.
+If the user is Seller, then after logging in, He/she can add their products which they want to sell within their city and can edit/delete their already added products. If a Buyer buys their products then they will receive notification regarding the details and address of the buyer and can deliver the product using google maps direction which is embedded in our app using Google Maps API.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## How to Use 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Step 1:**
+
+Download or clone this repo by using the link below:
+```
+https://github.com/dhruvm2509/primespot.git
+```
+
+**Step 2:**
+
+Go to project root and execute the following command in console to get the required dependencies: 
+
+```
+flutter pub get 
+```
+**Step 3:**
+
+After it run this command:
+  ```
+  flutter run
+  ```
+  
+  Tools & modules Used:
+  - Flutter 
+  - FireBase (for backend and database)
+  - Google_maps_flutter
+  - razorpay_flutter
+  - url_launcher
+  - geolocator
+  - flutter_polyline_points
+  - cloud_firestore
+  - geocoding
+  - flutter_google_places
+  - geo_firestore_flutter
+  
+  
+  ![Login](https://github.com/dhruvm2509/primespot/blob/main/Images/Login.jpeg)![OTP](https://github.com/dhruvm2509/primespot/blob/main/Images/OTP.jpeg)|  ![OTP2](https://github.com/dhruvm2509/primespot/blob/main/Images/OTP2.jpeg)|  ![dashboard](https://github.com/dhruvm2509/primespot/blob/main/Images/Dashboard.jpeg)|  ![Categories1](https://github.com/dhruvm2509/primespot/blob/main/Images/Categories1.jpeg)|  ![ Categories2](https://github.com/dhruvm2509/primespot/blob/main/Images/ Categories2.jpeg)|  ![Details](https://github.com/dhruvm2509/primespot/blob/main/Images/Product_Details.jpeg)|  ![Buy](https://github.com/dhruvm2509/primespot/blob/main/Images/Buy.jpeg)|  ![Directions](https://github.com/dhruvm2509/primespot/blob/main/Images/Directions.jpeg)|  ![Wishlist](https://github.com/dhruvm2509/primespot/blob/main/Images/Wishlist.jpeg)|  ![Seller_Dashboard](https://github.com/dhruvm2509/primespot/blob/main/Images/Seller_Dashboard.jpeg)|  ![Edit_Product](https://github.com/dhruvm2509/primespot/blob/main/Images/Edit_Product.jpeg)|  ![Notifications](https://github.com/dhruvm2509/primespot/blob/main/Images/Notifications.jpeg)|
