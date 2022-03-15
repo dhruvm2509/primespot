@@ -8,11 +8,11 @@ Clone the project through this link:
 
 
 Prime Spot has 2 Interfaces to users:
-First one for Buyers who wants to buy products within their city range and Second one for Sellers who wants to sell their products within their city. 
-This app will provide benefits to local Shopkeepers to grow their business. They can register their products and can sell it throughout their city range. And the customers within their city can buy and will get the product delivered within short duration of time (couple of Hours).
-We are authenticating users through mobile number and OTP(One Time Password) as OTP is more secure form of authentication. 
-If the user is Buyer, then after logging in, He/she can find various products that are uploaded by different Sellers within their city. If they find the product useful and wants to buy the product then they can see the Seller’s contact and can get direction to the Seller’s Shop if home Delivery isn’t available after payment. If Buyer wants to save that product for future, he/she can add that to their Wishlist and can purchase that product later.
-If the user is Seller, then after logging in, He/she can add their products which they want to sell within their city and can edit/delete their already added products. If a Buyer buys their products then they will receive notification regarding the details and address of the buyer and can deliver the product using google maps direction which is embedded in our app using Google Maps API.
+   * First one for Buyers who wants to buy products within their city range and Second one for Sellers who wants to sell their products within their city. 
+   * This app will provide benefits to local Shopkeepers to grow their business. They can register their products and can sell it throughout their city range. And the customers within their city can buy and will get the product delivered within short duration of time (couple of Hours).
+   * We are authenticating users through mobile number and OTP(One Time Password) as OTP is more secure form of authentication. 
+   * If the user is Buyer, then after logging in, He/she can find various products that are uploaded by different Sellers within their city. If they find the product useful and wants to buy the product then they can see the Seller’s contact and can get direction to the Seller’s Shop if home Delivery isn’t available after payment. If Buyer wants to save that product for future, he/she can add that to their Wishlist and can purchase that product later.
+   * If the user is Seller, then after logging in, He/she can add their products which they want to sell within their city and can edit/delete their already added products. If a Buyer buys their products then they will receive notification regarding the details and address of the buyer and can deliver the product using google maps direction which is embedded in our app using Google Maps API.
 
 ## How to Use 
 
