@@ -144,7 +144,7 @@ class _NotificationsState extends State<Notifications> {
             ),
             SingleChildScrollView(
               child: Container(
-                height: 559,
+                height: 600,
                 child: ListView.builder(
                     padding: const EdgeInsets.all(8),
                     itemCount: list.length,

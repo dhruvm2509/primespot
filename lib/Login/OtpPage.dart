@@ -178,14 +178,14 @@ class _OTPScreenState extends State<OTPScreen> {
                         borderRadius: BorderRadius.circular(25.0),
                         image: DecorationImage(
                           image: NetworkImage(
-                              'https://tezzbuzz.com/wp-content/uploads/2020/10/security-otp-one-time-password-smartphone-shield_9904-104.jpg'),
+                              'https://image.freepik.com/free-vector/password-code-verification-security-protection-authorization-notice-mobile-phone-digital-secure-access-pus-notification-message-cellphone-vector-flat_212005-111.jpg'),
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 233.0, left: 35.0),
+                    padding: const EdgeInsets.only(top: 233.0, left: 50.0),
                     child: Container(
                       height: 35.0,
                       width: 290.0,

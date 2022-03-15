@@ -109,7 +109,7 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
           Row(
             children: [
               SizedBox(
-                width: 6.0,
+                width: 20.0,
               ),
               Card(
                 elevation: 18.0,
@@ -138,7 +138,7 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
                 ),
               ),
               SizedBox(
-                width: 10.0,
+                width: 15.0,
               ),
               Card(
                 elevation: 18.0,
@@ -180,10 +180,10 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
                 style: TextStyle(
                     fontSize: 17.0,
                     fontWeight: FontWeight.w900,
-                    letterSpacing: 2.0),
+                    letterSpacing: 1.5),
               ),
               SizedBox(
-                width: 70.0,
+                width: 60.0,
               ),
               Text(
                 'Grocery',
@@ -200,7 +200,7 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
           Row(
             children: [
               SizedBox(
-                width: 6.0,
+                width: 20.0,
               ),
               Card(
                 elevation: 18.0,
@@ -229,7 +229,7 @@ class _BuyerDashboardState extends State<BuyerDashboard> {
                 ),
               ),
               SizedBox(
-                width: 10.0,
+                width: 15.0,
               ),
               Card(
                 elevation: 18.0,

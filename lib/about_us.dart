@@ -52,7 +52,7 @@ class About_us extends StatelessWidget {
             ),
           ),
           Container(
-            height: 545,
+            height: 630,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -227,9 +227,9 @@ class About_us extends StatelessWidget {
                                       Text(
                                         'hrithikvarshney98@gmail.com',
                                         style: TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 13,
                                             fontWeight: FontWeight.w900,
-                                            letterSpacing: 1.1,
+                                            letterSpacing: 0.5,
                                             color: Colors.amber),
                                       )
                                     ],

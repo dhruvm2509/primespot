@@ -267,7 +267,7 @@ class _Product_detailsState extends State<Product_details> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 300.0),
+              padding: const EdgeInsets.only(left: 330.0),
               child: Container(
                 width: 60.0,
                 decoration: BoxDecoration(
@@ -302,7 +302,7 @@ class _Product_detailsState extends State<Product_details> {
                     )),
                 child: SingleChildScrollView(
                   child: Container(
-                    height: 590.0,
+                    height: 630.0,
                     child: Column(
                       children: [
                         SizedBox(
@@ -316,7 +316,7 @@ class _Product_detailsState extends State<Product_details> {
                               Text(
                                 '${widget.products.productName}',
                                 style: TextStyle(
-                                  fontSize: 40.0,
+                                  fontSize: 30.0,
                                   fontWeight: FontWeight.w900,
                                   letterSpacing: 2.0,
                                 ),
@@ -340,49 +340,6 @@ class _Product_detailsState extends State<Product_details> {
                         ),
                         SizedBox(
                           height: 10.0,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: 335,
-                            width: double.infinity,
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(45.0))),
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 15.0,
-                                  ),
-                                  Text(
-                                    'Description',
-                                    style: TextStyle(
-                                      fontSize: 25.0,
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 1.5,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 15.0,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 15.0, right: 15.0, bottom: 15.0),
-                                    child: Text(
-                                      '${widget.products.productDescription}',
-                                      style: TextStyle(
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w500,
-                                        letterSpacing: 1.5,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              elevation: 10.0,
-                            ),
-                          ),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -622,6 +579,55 @@ class _Product_detailsState extends State<Product_details> {
                           ],
                         ),
                         SizedBox(height: 30.0),
+                        SingleChildScrollView(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 400,
+                              width: double.infinity,
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(45.0))),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 15.0,
+                                      ),
+                                      Text(
+                                        'Description',
+                                        style: TextStyle(
+                                          fontSize: 25.0,
+                                          fontWeight: FontWeight.w900,
+                                          letterSpacing: 1.5,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 15.0,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 15.0,
+                                            right: 15.0,
+                                            bottom: 15.0),
+                                        child: Text(
+                                          '${widget.products.productDescription}',
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.w500,
+                                            letterSpacing: 1.5,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                elevation: 10.0,
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),

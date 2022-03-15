@@ -173,7 +173,7 @@ class _MobileState extends State<Mobile> {
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 350,
+                        height: 400,
                         width: double.infinity,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
