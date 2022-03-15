@@ -56,7 +56,7 @@ class _WishlistState extends State<Wishlist> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            height: 570,
+            height: 650,
             child: ListView.builder(
                 padding: const EdgeInsets.all(8),
                 itemCount: list.length,

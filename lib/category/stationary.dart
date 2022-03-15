@@ -169,7 +169,7 @@ class _StationaryState extends State<Stationary> {
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 340,
+                        height: 400,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
                             itemCount: allProducts.length,

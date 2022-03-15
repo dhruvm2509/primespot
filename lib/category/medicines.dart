@@ -168,7 +168,7 @@ class _MedicinesState extends State<Medicines> {
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 342,
+                        height: 400,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
                             itemCount: allProducts.length,

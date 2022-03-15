@@ -100,12 +100,15 @@ class _ProductCardWishlistState extends State<ProductCardWishlist> {
                           // SizedBox(
                           //   height: 5.0,
                           // ),
-                          Text(
-                            ' ${widget.products.productName}',
-                            style: TextStyle(
-                                fontSize: 25.0,
-                                letterSpacing: 2.0,
-                                fontWeight: FontWeight.w900),
+                          FittedBox(
+                            fit: BoxFit.fill,
+                            child: Text(
+                              ' ${widget.products.productName}',
+                              style: TextStyle(
+                                  fontSize: 20.0,
+                                  letterSpacing: 1,
+                                  fontWeight: FontWeight.w900),
+                            ),
                           ),
                           SizedBox(
                             height: 5.0,
@@ -122,7 +125,7 @@ class _ProductCardWishlistState extends State<ProductCardWishlist> {
                           ),
 
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(80, 35, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(80, 35, 10, 0),
                             child: Container(
                               child: InkWell(
                                   onTap: () {
@@ -137,9 +140,9 @@ class _ProductCardWishlistState extends State<ProductCardWishlist> {
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.fromLTRB(
-                                                      20, 5, 0, 0),
+                                                      20, 5, 10, 0),
                                               child: Container(
-                                                height: 200.0,
+                                                height: 250.0,
                                                 width: 380.0,
                                                 child: ListView(
                                                   children: <Widget>[

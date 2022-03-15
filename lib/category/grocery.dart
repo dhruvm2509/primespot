@@ -168,7 +168,7 @@ class _GroceryState extends State<Grocery> {
                 children: [
                   RefreshIndicator(
                       child: Container(
-                        height: 350,
+                        height: 400,
                         child: ListView.builder(
                             padding: const EdgeInsets.all(8),
                             itemCount: allProducts.length,

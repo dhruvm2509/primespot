@@ -100,7 +100,7 @@ class _SellerDashboardState extends State<SellerDashboard> {
                   ? Text(
                       'Seller\'s Dashboard',
                       style: TextStyle(
-                        fontSize: 23.0,
+                        fontSize: 20.0,
                         color: Colors.white,
                         letterSpacing: 1.5,
                         fontWeight: FontWeight.w900,
@@ -109,7 +109,7 @@ class _SellerDashboardState extends State<SellerDashboard> {
                   : Text(
                       '$sellerName',
                       style: TextStyle(
-                        fontSize: 23.0,
+                        fontSize: 20.0,
                         color: Colors.white,
                         letterSpacing: 1.5,
                         fontWeight: FontWeight.w900,
@@ -345,7 +345,7 @@ class _SellerDashboardState extends State<SellerDashboard> {
                       })),
               RefreshIndicator(
                   child: Container(
-                    height: 560,
+                    height: 600,
                     child: ListView.builder(
                         padding: const EdgeInsets.all(8),
                         itemCount: allProducts.length,
