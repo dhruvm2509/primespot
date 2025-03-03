@@ -9,6 +9,7 @@ class NotificationItem {
   String message = "";
   String buyerName = "";
 
+
   NotificationItem(
       {required this.productName,
       required this.productDescription,
